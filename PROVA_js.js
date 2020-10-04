@@ -1,5 +1,4 @@
 
-
 /* funzione per cambiare stile */
 function changeCSS(cssFile, cssLinkIndex) {
 
