@@ -1,5 +1,5 @@
 function prevArticle(IssueN) {
-	var articles = document.getElementById(issueN).children; /*tra tutti gli iframe di tutte le issue */
+	var articles = document.getElementById(issueN).children; /*tra tutti gli iframe di tutte le issue: articles è un HTMLcollection */
 	
 	 /*trova quello che viene mostrato, cioè che ha valore "block" alla proprietà display nel css:*/
 	for (var i = 1; i < articles.length; i++) {
@@ -17,7 +17,7 @@ function prevArticle(IssueN) {
 
 
 			/*
-			var framePosition = articles.indexOf(frame); non va bene questo metodo per capire a che posizione è il frame displayed 
+			var framePosition = articles.indexOf(frame); non va bene questo metodo per capire a che posizione è il frame displayed, perché vale solo per le stringhe o gli arrays
 			var prev = articles[framePosition-1];
 			prev.style.display = "block";
 			*/
