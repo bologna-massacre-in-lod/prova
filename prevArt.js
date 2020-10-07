@@ -3,7 +3,8 @@ function prevArticle() {
 	
 	 /*trova quello che viene mostrato, cioè che ha valore "block" alla proprietà display nel css:*/
 	for (frame in myFrames) {
-		if (frame.style.display = "block") {
+		var displayValue = window.getComputedStyle(frame, null).display;
+		if (displayValue === "block") {
 			frame.style.display = "none";
 			var framePosition = indexOf(frame);
 			var prev = myFrames[framePosition-1];
