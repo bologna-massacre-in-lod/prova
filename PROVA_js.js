@@ -1,56 +1,77 @@
-
-/* funzione per cambiare stile */
 function changeCSS(cssFile, cssLinkIndex) {
+	/* create new link */
 
-    var oldlink = document.getElementsByTagName("link").item(cssLinkIndex); 
-
-    var newlink = document.createElement("link");
-    newlink.setAttribute("rel", "stylesheet");
-    newlink.setAttribute("type", "text/css");
-    newlink.setAttribute("href", cssFile);
-
-    document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
-
-	var frames = window.frames;
-    var i;
-    for (i = 0; i < frames.length; i++) {
-        /*frames[i].document.head.repleaceChild(newLink);*/
-        frames[i+1]document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
-
-
-    /* var doc=document.getElementsByTagName("iframe");
+	var newlink = document.createElement("link");
+	newlink.rel = "stylesheet"; 
+  	newlink.type = "text/css";
+	newlink.href = cssFile;
+	
+	/* case 1: external html */
+	
+	var linksArray = document.head.getElementsByTagName("link");
+	var firstCount = 0;
+    	for (var l = 0; l < linksArray.length; l++) {
+    		if (linksArray[l].rel == "stylesheet") {
+ 			firstCount += 1;
+    			linksArray[l].href = cssFile;
+    		}
+    	}
+    	if (firstCount == 0) {
+    		document.head.appendChild(newlink);
+    	}
+	
+	/* case 2: internal html */
+	
+	var myFrames = document.getElementsByTagName("iframe");
+    	for (var i = 0; i < myFrames.length; i++) {
+    		var n = i+1;
+    		var myFrame = document.getElementById("iframe"+ n);
+    		var elmnt = myFrame.contentWindow.document.head;
+    		var mylinks = elmnt.getElementsByTagName("link");
+    		var count = 0;
+    		for (var l = 0; l < mylinks.length; l++) {
+    			if (mylinks[l].rel == "stylesheet") {
+    				count += 1;
+    				mylinks[l].href = cssFile;
+    			}
+    		}
+    		if (count == 0) {
+    			elmnt.appendChild(newlink);
+    		}
+    	}
+    
+    /* aggiunta per cambiare il css anche nei singoli iframe    */
+    
+    /* frames[i].document.head.repleaceChild(newLink);
+    n = i+1
+    frames['frame'+n].document.head.children[1].replace(newlink, oldlink);   */
+	
+    /*	var doc = document.getElementsByTagName("iframe");
 	for (var i = 0; i < doc.length; i++) {
-		var singledoc = doc[i].contentWindow;
-		var iframeOldlink = singledoc.document.getElementsByTagName("link").item(cssLinkIndex);
-		singledoc.document.getElementsByTagName("head").item(0).replaceChild(newlink, iframeOldlink);
-	 	} */
-
-
-	/* alternativa da StackOverflow però ogni elemento iframe deve avere un id
-	var cssLink = document.createElement("link");
-	cssLink.href = "style.css"; 
-	cssLink.rel = "stylesheet"; 
-	cssLink.type = "text/css"; 
-	frames['iframe1'].document.head.appendChild(cssLink);
-	*/
-
-    }
+		var c = doc[i].contentWindow;
+		var iframeOldlink = c.document.getElementsByTagName("link").item(cssLinkIndex);
+		var d = c.document.getElementsByTagName("head");
+		d[0].replaceChild(newlink, iframeOldlink);
+    	}  */
 }
 
 
-/* funzione per cambiare issues, cioè per visualizzare quella che viene selezionata e nascondere quelle non selezionate */
 function changeIssue(issueN){
 	if ('issue1' === issueN) {
-		x = document.getElementById('issue1')
-		y = document.getElementById('issue2')
+		var x = document.getElementById('issue1');
+		var y = document.getElementById('issue2');
 	} 
 	else {
-		x = document.getElementById('issue2')
-		y = document.getElementById('issue1')
+		var x = document.getElementById('issue2');
+		var y = document.getElementById('issue1');
 	}
 
-		x.style.display = "block";
-		y.style.display = "none";
+	x.style.display = "block";
+	x.children[0].style.display = "block";
+	for (var i=1; i<=3; i++) {
+		x.children[i].style.display = "none";
+	}
+	y.style.display = "none";
 
 
 	var oldArticles = document.getElementById("changeArguments").children;
@@ -63,54 +84,69 @@ function changeIssue(issueN){
 	    newArticle.innerHTML = 'article'+n;
 
 	    document.getElementById("changeArguments").replaceChild(newArticle, oldArticles[i]);
-    }
+    	}
+	
+     /* var originButton = document.getElementById("Origin");
+	if (originButton.hasAttribute("href")) {
+		originButton.removeAttribute("href");
+	}
+	*/
 }
 
 
-/* funzione per cambiare articoli, cioè per visuaizzare quello selezionato e nascondere gli altri */
+
 function changeArticle(articleNum, issueNum){
 	var c = document.getElementById(issueNum).children;
+	c[0].style.display = "none";
 	for (var i=1; i<=3; i++) {
 		if ("article" + i === articleNum) {
-			c[i-1].style.display = "block";
+			c[i].style.display = "block";
+			
+		/* TORNARE AL FILE SORGENTE
+			var myFrame = c[i].children[0]
+			var elmnt = myFrame.contentWindow.document.head;
+			var myMeta = elmnt.getElementsByTagName("meta");
+				for (var l = 0; l < myMeta.length; l++) {
+					if (myMeta[l].name == "DC.identifier" && myMeta[l].scheme == "DCTERMS.URI") {
+						myOrigin = document.getelementById("Origin");
+						myOrigin.href = myMeta[l].content;
+    					}
+    				}   */
 		}
 		else {
-			c[i-1].style.display = "none";
+			c[i].style.display = "none";
+		}
+	}	
+}
+
+/*	
+function changeArticleCover(articleNum, issueNum) {
+	var c = window.parent.document.getElementById(issueNum).children;
+	for (var i=1; i<=3; i++) {
+		if ("article" + i === articleNum) {
+			c[i].style.display = "block";
+		}
+		else {
+			c[i].style.display = "none";
 		}
 	}
 }
+*/	
 
 
 
 
 
 
-/* alternativa alla funzione per selezionare gli articoli:
-
-function changeArticle(articleN){
-	if ('article1' === articleN) {
-		var x = document.getElementById('article1')
-		var y = document.getElementById('article2')
-		var z = document.getElementById('article3')
-	} 
-	else if ('article2' === articleN) {
-		var x = document.getElementById('article2')
-		var y = document.getElementById('article1')
-		var z = document.getElementById('article3')
-	}
-	else {
-		var x = document.getElementById('article3')
-		var y = document.getElementById('article1')
-		var z = document.getElementById('article2')
-	}
-
-		x.style.display = "block";
-		y.style.display = "none";
-		z.style.display = "none";
-}
 
 
 
 
 
-*/
+
+
+
+
+
+
+
