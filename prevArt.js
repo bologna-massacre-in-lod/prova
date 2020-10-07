@@ -1,4 +1,4 @@
-function prevArticle(IssueN) {
+function prevArticle() {
 	var articles = document.getElementById(issueN).children; /*tra tutti gli iframe di tutte le issue: articles è un HTMLcollection */
 	
 	 /*trova quello che viene mostrato, cioè che ha valore "block" alla proprietà display nel css:*/
