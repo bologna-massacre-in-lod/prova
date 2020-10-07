@@ -11,9 +11,6 @@ function prevArticle() {
 			var prev = myFrames[framePosition-1];
 			prev.style.display = "block";
 		}
-		else {
-			i = i+1;
-		}
 	}
 }
 
