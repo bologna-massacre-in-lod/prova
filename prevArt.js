@@ -1,5 +1,5 @@
 function prevArticle(IssueN) {
-	var articles = document.getElementById(issueNum).children; /*tra tutti gli iframe di tutte le issue */
+	var articles = document.getElementById(issueN).children; /*tra tutti gli iframe di tutte le issue */
 	
 	 /*trova quello che viene mostrato, cioè che ha valore "block" alla proprietà display nel css:*/
 	for (var i = 1; i < articles.length; i++) {
