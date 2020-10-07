@@ -2,13 +2,17 @@ function prevArticle() {
 	var myFrames = document.getElementsByTagName("div"); /*tra tutti gli iframe di tutte le issue */
 	
 	 /*trova quello che viene mostrato, cioè che ha valore "block" alla proprietà display nel css:*/
-	for (frame in myFrames) {
+	for ( var i = 0; i < 4; i++) {
+		var frame = myFrames[0];
 		var displayValue = window.getComputedStyle(frame, null).display;
 		if (displayValue === "block") {
 			frame.style.display = "none";
 			var framePosition = indexOf(frame);
 			var prev = myFrames[framePosition-1];
 			prev.style.display = "block";
+		}
+		else {
+			i = i+1;
 		}
 	}
 }
