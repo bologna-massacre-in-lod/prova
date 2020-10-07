@@ -3,11 +3,11 @@ function prevArticle() {
 	
 	 /*trova quello che viene mostrato, cioè che ha valore "block" alla proprietà display nel css:*/
 	for ( var i = 0; i < 4; i++) {
-		var frame = myFrames[0];
+		var frame = myFrames[i];
 		var displayValue = window.getComputedStyle(frame, null).display;
 		if (displayValue === "block") {
 			frame.style.display = "none";
-			var framePosition = indexOf(frame);
+			var framePosition = myFrames.indexOf(frame);
 			var prev = myFrames[framePosition-1];
 			prev.style.display = "block";
 		}
