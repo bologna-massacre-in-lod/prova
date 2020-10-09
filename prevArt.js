@@ -1,5 +1,5 @@
 function prevArticle() {
-	var articles = document.getElementByClassName("issue").children; /*tra tutti gli iframe di tutte le issue: articles è un HTMLcollection */
+	var articles = document.getElementsByClassName("issue").children; /*tra tutti gli iframe di tutte le issue: articles è un HTMLcollection */
 	
 	 /*trova quello che viene mostrato, cioè che ha valore "block" alla proprietà display nel css:*/
 	for (var i = 2; i < articles.length; i++) { /* partiamo da i = 2 perché non vogliamo considerare né il primo div figlio (che il div della cover) né il div del primo articolo */
