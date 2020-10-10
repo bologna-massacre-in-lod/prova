@@ -1,10 +1,11 @@
 function prevArticle() {
-	var articles = document.getElementsByClassName("article"); /* articles è un HTMLCollection che comprende tutti i children dei div che hanno come classe "issue", cioè altri div (4 per ogni issue): uno che è la copertina e i tre articoli */
+	var articlesIssue1 = document.getElementByIdName("issue1").children; /* articles è un HTMLCollection che comprende tutti i children dei div che hanno come classe "issue", cioè altri div (4 per ogni issue): uno che è la copertina e i tre articoli */
+	var articlesIssue2 = document.getElementByIdName("issue2").children;
 
 	var i;
 
 	 /*trova quello che viene mostrato, cioè che ha valore "block" alla proprietà display nel css:*/
-	for (i = 2; i < articles.lenght; i++) { /* partiamo da i = 2 perché non vogliamo considerare né il primo div figlio (che il div della cover) né il div del primo articolo */
+	for (i = 2; i < articlesIssue1.lenght; i++) { /* partiamo da i = 2 perché non vogliamo considerare né il primo div figlio (che il div della cover) né il div del primo articolo */
 		var frame = articles[i];
 		var displayValue = window.getComputedStyle(frame, null).display;
 		if (displayValue === "block") {
@@ -26,6 +27,19 @@ function prevArticle() {
 
 
 	}
+
+	for (i = 2; i < articlesIssue2.lenght; i++) {
+		var frame = articles[i];
+		var displayValue = window.getComputedStyle(frame, null).display;
+		if (displayValue === "block") {
+			frame.style.display = "none";
+			articles[i-1].style.display = "block";
+			}
+
+	}
+
+
+
 }
 
 
