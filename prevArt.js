@@ -1,5 +1,5 @@
 function prevArticle() {
-	var articles = document.getElementsByClassName("issue").children; /* articles è un HTMLCollection che comprende tutti i children dei div che hanno come classe "issue", cioè altri div (4 per ogni issue): uno che è la copertina e i tre articoli */
+	var articles = document.getElementsByClassName("article"); /* articles è un HTMLCollection che comprende tutti i children dei div che hanno come classe "issue", cioè altri div (4 per ogni issue): uno che è la copertina e i tre articoli */
 
 	var i;
 
