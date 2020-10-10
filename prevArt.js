@@ -4,7 +4,7 @@ function prevArticle() {
 	var i;
 
 	 /*trova quello che viene mostrato, cioè che ha valore "block" alla proprietà display nel css:*/
-	for (i = 2; i < 5; i++) { /* partiamo da i = 2 perché non vogliamo considerare né il primo div figlio (che il div della cover) né il div del primo articolo */
+	for (i = 2; i < articles.lenght; i++) { /* partiamo da i = 2 perché non vogliamo considerare né il primo div figlio (che il div della cover) né il div del primo articolo */
 		var frame = articles[i];
 		var displayValue = window.getComputedStyle(frame, null).display;
 		if (displayValue === "block") {
