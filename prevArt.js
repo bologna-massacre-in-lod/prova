@@ -157,7 +157,7 @@ function prevArticlee() {
 		var frame = articles[i],
     		style = window.getComputedStyle(frame),
 			displayValue = style.getPropertyValue('display');
-		if (displayValue === "block") {
+		if (displayValue === 'block') {
 			frame.style.display='none';
 			articles[i-1].style.display = 'block';
 		}
@@ -171,7 +171,7 @@ function changeArt(iframeNum){
   var element = document.getElementById(iframeNum);
   var style = window.getComputedStyle(element);
   var displayValue = style.getPropertyValue('display');
-		if (displayValue === "none") {
+		if (displayValue === 'none') {
 			element.style.display='block';
 		}
 }
