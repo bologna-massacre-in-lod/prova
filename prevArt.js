@@ -122,8 +122,8 @@ function prevArticle5() {
     		style = window.getComputedStyle(articleDiv),
 			displayValue = style.getPropertyValue('display');
 		if (displayValue === "block") {
-			articleDiv.style.visibility='hidden';
-			articles[i-1].style.visibility = 'visible';
+			articleDiv.style.display='none';
+			articles[i-1].style.display = 'block';
 		}
 
 	}

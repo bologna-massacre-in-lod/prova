@@ -4,19 +4,19 @@
 	<head>		
 	</head>
 
-	<body onload="document.getElementsbyClassName('article').style.visibility='hidden'">
+	<body onload="document.getElementsbyClassName('article').style.display = 'none'">
 
 		<!-- bottoni per cambiare articolo -->
-		<input type="button" value="Article 1" onclick="document.getElementsbyClassName('article1').style.visibility='visible'">
-		<input type="button" value="Article 2" onclick="document.getElementsbyClassName('article2').style.visibility='visible'">
-		<input type="button" value="Article 3" onclick="document.getElementsbyClassName('article3').style.visibility='visible'">
+		<input type="button" value="Article 1" onclick="document.getElementsbyClassName('article1').style.display = 'block'">
+		<input type="button" value="Article 2" onclick="document.getElementsbyClassName('article2').style.display = 'block'">
+		<input type="button" value="Article 3" onclick="document.getElementsbyClassName('article3').style.display = 'block'">
 
 		<!-- bottone per articolo precedente -->
 		<!-- <button onclick="prevArticle1()"/>prev1</button>
 		<button onclick="prevArticle2()"/>prev2</button>
 		<button onclick="prevArticle3()"/>prev3</button>
 		<button onclick="prevArticle4()"/>prev4</button> -->
-		<input type="button" value="prev5" onclick="prevArticle()">
+		<input type="button" value="prev5" onclick="prevArticle5()">
 		<script src="prevArt.js"></script>
 
 
