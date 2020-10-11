@@ -4,20 +4,19 @@
 	<head>		
 	</head>
 
-	<body>
+	<body onload="document.getElementsbyTagName('iframe').style.visibility='hidden'">
 
 		<!-- bottoni per cambiare articolo -->
-		<button onclick="changeArticle()">Article 1</button>
-		<button onclick="changeArticle()">Article 2</button>
-		<button onclick="changeArticle()">Article 3</button>
-		<script src="prevArt.js"></script>
-		
+		<input type="button" value="Article 1" onclick="document.getElementById('iframe1').style.visibility='visible'">
+		<input type="button" value="Article 2" onclick="document.getElementById('iframe2').style.visibility='visible'">
+		<input type="button" value="Article 3" onclick="document.getElementById('iframe3').style.visibility='visible'">
+
 		<!-- bottone per articolo precedente -->
-		<button onclick="prevArticle1()"/>prev1</button>
+		<!-- <button onclick="prevArticle1()"/>prev1</button>
 		<button onclick="prevArticle2()"/>prev2</button>
 		<button onclick="prevArticle3()"/>prev3</button>
-		<button onclick="prevArticle4()"/>prev4</button>
-		<input type="button" value="prev5" onclick="prevArticle5()">
+		<button onclick="prevArticle4()"/>prev4</button> -->
+		<input type="button" value="prev5" onclick="prevArticle()">
 		<script src="prevArt.js"></script>
 
 

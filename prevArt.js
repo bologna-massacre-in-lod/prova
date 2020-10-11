@@ -131,8 +131,19 @@ function prevArticle5() {
 }
 
 
-function changeArticle() {
-	var articles = document.getElementsByClassName("article")
+function prevArticle() {
+	var articles = document.getElementsByClassName("article");
+
+	for (var i = 1; i < articles.lenght; i++) {
+		var articleDiv = articles[i],
+    		style = window.getComputedStyle(articleDiv),
+			visibilityValue = style.getPropertyValue('visibility');
+		if (visibilityValue === "visible") {
+			articleDiv.style.visibility='hidden';
+			articles[i-1].style.visibility = 'visible';
+		}
+
+	}
 
 
 }
