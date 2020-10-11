@@ -1,65 +1,37 @@
 <!DOCTYPE>
 <html>
 
-	<head>		
+	<head>
+	<style>
+		iframe {
+			display: none;
+		}
+	</style>		
 	</head>
 
-	<body onload="document.getElementsbyClassName('article').style.display = 'none'">
+	<body>
 
 		<!-- bottoni per cambiare articolo -->
-		<input type="button" value="Article 1" onclick="document.getElementsbyClassName('article1').style.display = 'block'">
-		<input type="button" value="Article 2" onclick="document.getElementsbyClassName('article2').style.display = 'block'">
-		<input type="button" value="Article 3" onclick="document.getElementsbyClassName('article3').style.display = 'block'">
+		<input type="button" value="Article 1" onclick="document.getElementbyId('iframe1').style.display = 'block'">
+		<input type="button" value="Article 2" onclick="document.getElementbyId('iframe2').style.display = 'block'">
+		<input type="button" value="Article 3" onclick="document.getElementbyId('iframe3').style.display = 'block'">
 
 		<!-- bottone per articolo precedente -->
 		<!-- <button onclick="prevArticle1()"/>prev1</button>
 		<button onclick="prevArticle2()"/>prev2</button>
 		<button onclick="prevArticle3()"/>prev3</button>
 		<button onclick="prevArticle4()"/>prev4</button> -->
-		<input type="button" value="prev5" onclick="prevArticle5()">
+		<input type="button" value="prev5" onclick="prevArticlee()">
 		<script src="prevArt.js"></script>
 
 
-		<!-- issue 1 -->
+		<iframe src="cover_page1.html" id="cover" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 15%;"></iframe>
 
-		<div id="issue1" class="issue">
-			
-			<!-- cover page 1 -->
-			
-			<div id="coverPage1">
-				<iframe src="cover_page1.html" name="coverPage1" id="coverPage1"
-					frameborder="0" border="0" cellspacing="0"
-					style="border-style: none;width: 100%; height: 15%;">
-					</iframe>
-			</div>
+		<iframe src="art1-bbc1.html" id="iframe1" frameborder="0" border="0" cellspacing="0"style="border-style: none;width: 100%; height: 450%;"></iframe>
 
-			<!-- article 1 -->
+		<iframe src="art2-bbc2.html" id="iframe2" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 400%;"></iframe>
 
-			<div class="article1 articleIssue1 article">
-				<iframe src="art1-bbc1.html" name="iframe1" id="iframe1"
-		        	frameborder="0" border="0" cellspacing="0"
-		        	style="border-style: none;width: 100%; height: 450%;">
-		        	</iframe>
-	    		</div>
-
-			<!-- article 2 -->
-
-			<div class="article2 articleIssue1 article">
-				<iframe src="art2-bbc2.html" name="iframe2" id="iframe2" 
-				frameborder="0" border="0" cellspacing="0"
-				style="border-style: none;width: 100%; height: 400%;">
-				</iframe>
-	    	</div>
-
-			<!-- article 3 -->
-
-			<div class="article3 articleIssue1 article">
-				<iframe src="art3-Atl.html" name="iframe3" id="iframe3"
-				frameborder="0" border="0" cellspacing="0"
-				style="border-style: none;width: 100%; height: 480%;">
-				</iframe>
-	        	</div>
-	    	</div>
+		<iframe src="art3-Atl.html" id="iframe3" frameborder="0" border="0" cellspacing="0"style="border-style: none;width: 100%; height: 480%;"></iframe>
 
 
 	</body>
