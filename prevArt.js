@@ -98,3 +98,19 @@ function prevArticle3() {
 	}
 
 }
+
+function prevArticle4() {
+	var articles = document.getElementsByClassName("article");
+	var i;
+
+	for (i = 0; i < articles.lenght; i++) {
+		var frame = articles[i];
+		var displayValue = window.getComputedStyle(frame, null).display;
+		if (displayValue === "block") {
+			frame1.style.display = "none";
+			articlesIssue1[i-1].style.display = "block";
+			}
+
+	}
+
+}
