@@ -1,12 +1,11 @@
 function prevArticle() {
-	var articlesIssue1 = document.getElementById("issue1").children; /* articles è un HTMLCollection che comprende tutti i children dei div che hanno come classe "issue", cioè altri div (4 per ogni issue): uno che è la copertina e i tre articoli */
-	var articlesIssue2 = document.getElementById("issue2").children;
+	var articles = document.getElementByClassName("article"); /* articles è un HTMLCollection che comprende tutti i children dei div che hanno come classe "issue", cioè altri div (4 per ogni issue): uno che è la copertina e i tre articoli */
 
 	var i;
 
 	 /*trova quello che viene mostrato, cioè che ha valore "block" alla proprietà display nel css:*/
-	for (i = 2; i < articlesIssue1.lenght; i++) { /* partiamo da i = 2 perché non vogliamo considerare né il primo div figlio (che il div della cover) né il div del primo articolo */
-		var frame = articlesIssue1[i];
+	for (i = 2; i < articles.lenght; i++) { /* partiamo da i = 2 perché non vogliamo considerare né il primo div figlio (che il div della cover) né il div del primo articolo */
+		var frame = articles[i];
 		var displayValue = window.getComputedStyle(frame, null).display;
 		if (displayValue === "block") {
 			frame.style.display = "none"; /* ora nascondimelo */
@@ -14,7 +13,7 @@ function prevArticle() {
 			/*
 			var frameName = frame.class.value; /* voglio il nome del frame, quindi il valore dell'attributo class
 			var frameNum = frameName[6]; estraggo il numero dal nome, che è nascondimelo */
-			articlesIssue1[i-1].style.display = "block";
+			articles[i-1].style.display = "block";
 			}
 			
 
@@ -27,18 +26,6 @@ function prevArticle() {
 
 
 	}
-
-	for (i = 2; i < articlesIssue2.lenght; i++) {
-		var frame = articlesIssue2[i];
-		var displayValue = window.getComputedStyle(frame, null).display;
-		if (displayValue === "block") {
-			frame.style.display = "none";
-			articlesIssue2[i-1].style.display = "block";
-			}
-
-	}
-
-
 
 }
 
