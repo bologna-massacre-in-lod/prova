@@ -1,3 +1,14 @@
+/*
+scomponi l'id per capire che numero è
+mostra l'iframe che ha come id il nome - 1 
+OPPURE
+data n = posizione dell'articolo mostrato all'interno dei figli dell'issue
+mostrami il frame che è alla posizione n -1
+
+
+*/
+
+
 function prevArticle1() {
 	var articles = document.getElementsByClassName("article"); /* articles è un HTMLCollection che comprende tutti i children dei div che hanno come classe "issue", cioè altri div (4 per ogni issue): uno che è la copertina e i tre articoli */
 
@@ -59,14 +70,31 @@ function prevArticle2() {
 
 }
 
+function prevArticle3() {
+	var articlesIssue1 = document.getElementsByClassName("articleIssue1");
+	var i;
 
+	for (i = 2; i < articlesIssue1.lenght; i++) {
+		var frame1 = articlesIssue1[i];
+		var displayValue = window.getComputedStyle(frame1, null).display;
+		if (displayValue === "block") {
+			frame1.style.display = "none";
+			articlesIssue1[i-1].style.display = "block";
+			}
 
-/*
-scomponi l'id per capire che numero è
-mostra l'iframe che ha come id il nome - 1 
-OPPURE
-data n = posizione dell'articolo mostrato all'interno dei figli dell'issue
-mostrami il frame che è alla posizione n -1
+	}
 
+	var articlesIssue2 = document.getElementsByClassName("articleIssue2");
+	var c;
 
-*/
+	for (c = 2; c < articlesIssue2.lenght; c++) {
+		var frame2 = articlesIssue2[c];
+		var displayValue = window.getComputedStyle(frame2, null).display;
+		if (displayValue === "block") {
+			frame2.style.display = "none";
+			articlesIssue2[c-1].style.display = "block";
+			}
+
+	}
+
+}
