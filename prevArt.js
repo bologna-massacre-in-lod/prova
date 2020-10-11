@@ -168,7 +168,7 @@ function prevArticlee() {
 
 
 function changeArt(iframeNum){
-  var element = document.getElementById("iframeNum");
+  var element = document.getElementById(iframeNum);
   var style = window.getComputedStyle(element);
   var displayValue = style.getPropertyValue('display');
 		if (displayValue === "none") {
