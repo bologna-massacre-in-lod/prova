@@ -21,7 +21,7 @@ function prevArticle1() {
 		if (displayValue === "block") {
 			frame.style.display = "none"; /* ora nascondimelo */
 			articles[i-1].style.display = "block";
-			}
+		}
 			
 
 
@@ -47,7 +47,7 @@ function prevArticle2() {
 		if (displayValue1 === "block") {
 			frame1.style.display = "none";
 			articlesIssue1[i-1].style.display = "block";
-			}
+		}
 
 	}
 
@@ -60,7 +60,7 @@ function prevArticle2() {
 		if (displayValue2 === "block") {
 			frame2.style.display = "none";
 			articlesIssue2[c-1].style.display = "block";
-			}
+		}
 
 	}
 
@@ -76,7 +76,7 @@ function prevArticle3() {
 		if (displayValue1 === "block") {
 			frame1.style.display = "none";
 			articlesIssue1[i-1].style.display = "block";
-			}
+		}
 
 	}
 
@@ -89,7 +89,7 @@ function prevArticle3() {
 		if (displayValue2 === "block") {
 			frame2.style.display = "none";
 			articlesIssue2[c-1].style.display = "block";
-			}
+		}
 
 	}
 
@@ -106,7 +106,7 @@ function prevArticle4() {
 		if (displayValue === "block") {
 			articleDiv.style.display = "none";
 			articles[i-1].style.display = "block";
-			}
+		}
 
 	}
 
