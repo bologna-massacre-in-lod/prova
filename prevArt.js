@@ -1,4 +1,4 @@
-function prevArticle() {
+function prevArticle1() {
 	var articles = document.getElementsByClassName("article"); /* articles è un HTMLCollection che comprende tutti i children dei div che hanno come classe "issue", cioè altri div (4 per ogni issue): uno che è la copertina e i tre articoli */
 
 	var i;
@@ -28,6 +28,37 @@ function prevArticle() {
 	}
 
 }
+
+
+function prevArticle2() {
+	var articlesIssue1 = document.getElementById("issue1").children;
+	var i;
+
+	for (i = 2; i < articlesIssue1.lenght; i++) {
+		var frame1 = articlesIssue1[i];
+		var displayValue = window.getComputedStyle(frame1, null).display;
+		if (displayValue === "block") {
+			frame1.style.display = "none";
+			articlesIssue1[i-1].style.display = "block";
+			}
+
+	}
+
+	var articlesIssue2 = document.getElementById("issue2").children;
+	var c;
+
+	for (c = 2; c < articlesIssue2.lenght; c++) {
+		var frame2 = articlesIssue2[c];
+		var displayValue = window.getComputedStyle(frame2, null).display;
+		if (displayValue === "block") {
+			frame2.style.display = "none";
+			articlesIssue2[c-1].style.display = "block";
+			}
+
+	}
+
+}
+
 
 
 /*
