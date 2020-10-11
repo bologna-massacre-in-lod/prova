@@ -101,7 +101,8 @@ function prevArticle4() {
 
 	for (i = 1; i < articles.lenght; i++) {
 		var articleDiv = articles[i];
-		var displayValue = window.getComputedStyle(articleDiv, null).display;
+    	var style = window.getComputedStyle(articleDiv),
+		var displayValue = style.getPropertyValue('display');
 		if (displayValue === "block") {
 			articleDiv.style.display = "none";
 			articles[i-1].style.display = "block";
