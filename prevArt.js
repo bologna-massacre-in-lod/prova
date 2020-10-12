@@ -66,6 +66,14 @@ function prevArticle1() {
 
  }
 
+
+
+
+
+
+
+
+
  function prevArticle3() {
  	var articlesIssue1 = document.getElementsByClassName("articleIssue1");
  	var i;
@@ -96,7 +104,7 @@ function prevArticle1() {
  }
 
  function prevArticle4() {
- 	var articles = document.getElementsByClassName("article") /* quindi articles = <div class="article1 articleIssue1 article">, <div class="article2 articleIssue1 article">, <div class="article3 articleIssue1 article">, <div class="article1 articleIssue2 article">, <div class="article2 articleIssue2 article">, <div class="article3 articleIssue2 article"> */
+ 	var articles = document.getElementsByClassName("article"); /* quindi articles = <div class="article1 articleIssue1 article">, <div class="article2 articleIssue1 article">, <div class="article3 articleIssue1 article">, <div class="article1 articleIssue2 article">, <div class="article2 articleIssue2 article">, <div class="article3 articleIssue2 article"> */
  	var i;
 
  	for (i = 1; i < articles.lenght; i++) {
