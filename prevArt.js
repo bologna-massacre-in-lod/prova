@@ -15,7 +15,7 @@ function prevArticle1() {
  	var i;
 
  	 /*trova quello che viene mostrato, cioè che ha valore "block" alla proprietà display nel css:*/
- 	for (i = 1; i < articles.lenght; i++) { /* partiamo da i = 2 perché non vogliamo considerare né il primo div figlio (che il div della cover) né il div del primo articolo */
+ 	for (i = 1; i < articles.length; i++) { /* partiamo da i = 2 perché non vogliamo considerare né il primo div figlio (che il div della cover) né il div del primo articolo */
  		var frame = articles[i];
  		var displayValue = window.getComputedStyle(frame, null).display;
  		if (displayValue === "block") {
@@ -41,7 +41,7 @@ function prevArticle1() {
  	var articlesIssue1 = document.getElementById("issue1").children;
  	var i;
 
- 	for (i = 2; i < articlesIssue1.lenght; i++) {
+ 	for (i = 2; i < articlesIssue1.length; i++) {
  		var frame1 = articlesIssue1[i];
  		var displayValue1 = window.getComputedStyle(frame1, null).display;
  		if (displayValue1 === "block") {
@@ -54,7 +54,7 @@ function prevArticle1() {
  	var articlesIssue2 = document.getElementById("issue2").children;
  	var c;
 
- 	for (c = 2; c < articlesIssue2.lenght; c++) {
+ 	for (c = 2; c < articlesIssue2.length; c++) {
  		var frame2 = articlesIssue2[c];
  		var displayValue2 = window.getComputedStyle(frame2, null).display;
  		if (displayValue2 === "block") {
@@ -78,7 +78,7 @@ function prevArticle1() {
  	var articlesIssue1 = document.getElementsByClassName("articleIssue1");
  	var i;
 
- 	for (i = 2; i < articlesIssue1.lenght; i++) {
+ 	for (i = 2; i < articlesIssue1.length; i++) {
  		var frame1 = articlesIssue1[i];
  		var displayValue1 = window.getComputedStyle(frame1, null).display;
  		if (displayValue1 === "block") {
@@ -91,7 +91,7 @@ function prevArticle1() {
  	var articlesIssue2 = document.getElementsByClassName("articleIssue2");
  	var c;
 
- 	for (c = 2; c < articlesIssue2.lenght; c++) {
+ 	for (c = 2; c < articlesIssue2.length; c++) {
  		var frame2 = articlesIssue2[c];
  		var displayValue2 = window.getComputedStyle(frame2, null).display;
  		if (displayValue2 === "block") {
@@ -107,7 +107,7 @@ function prevArticle1() {
  	var articles = document.getElementsByClassName("article"); /* quindi articles = <div class="article1 articleIssue1 article">, <div class="article2 articleIssue1 article">, <div class="article3 articleIssue1 article">, <div class="article1 articleIssue2 article">, <div class="article2 articleIssue2 article">, <div class="article3 articleIssue2 article"> */
  	var i;
 
- 	for (i = 1; i < articles.lenght; i++) {
+ 	for (i = 1; i < articles.length; i++) {
  		var articleDiv = articles[i],
      		style = window.getComputedStyle(articleDiv),
  			displayValue = style.getPropertyValue('display');
@@ -125,7 +125,7 @@ function prevArticle5() {
 	var articles = document.getElementsByClassName("article"); /* quindi articles = <div class="article1 articleIssue1 article">, <div class="article2 articleIssue1 article">, <div class="article3 articleIssue1 article">, <div class="article1 articleIssue2 article">, <div class="article2 articleIssue2 article">, <div class="article3 articleIssue2 article"> */
 	var i;
 
-	for (i = 1; i < articles.lenght; i++) {
+	for (i = 1; i < articles.length; i++) {
 		var articleDiv = articles[i],
     		style = window.getComputedStyle(articleDiv),
 			displayValue = style.getPropertyValue('display');
@@ -142,7 +142,7 @@ function prevArticle5() {
 function prevArticle() {
 	var articles = document.getElementsByClassName("article");
 
-	for (var i = 1; i < articles.lenght; i++) {
+	for (var i = 1; i < articles.length; i++) {
 		var articleDiv = articles[i],
     		style = window.getComputedStyle(articleDiv),
 			visibilityValue = style.getPropertyValue('visibility');
