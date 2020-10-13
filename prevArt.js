@@ -16,6 +16,11 @@ function prevArticle1() {
  	var i;
  	for (i = 1; i < articles.length; i++) {
  		var frame = articles[i];
+ 		var firstArticle = document.getElementsByClassName("article1");
+ 		if (frame === firstArticle) {
+ 			var buttonDisplay = window.getComputedStyle(frame, null).display;
+ 			articles[i-1].style.display = "block";
+ 		}
  		var displayValue = window.getComputedStyle(frame, null).display;
  		if (displayValue === "block") {
  			frame.style.display = "none";
