@@ -78,7 +78,7 @@ function prevArticle1() {
  	var articlesIssue1 = document.getElementsByClassName("articleIssue1");
  	var i;
 
- 	for (i = 2; i < articlesIssue1.length; i++) {
+ 	for (i = 0; i < articlesIssue1.length; i++) {
  		var frame1 = articlesIssue1[i];
  		var displayValue1 = window.getComputedStyle(frame1, null).display;
  		if (displayValue1 === "block") {
@@ -91,7 +91,7 @@ function prevArticle1() {
  	var articlesIssue2 = document.getElementsByClassName("articleIssue2");
  	var c;
 
- 	for (c = 2; c < articlesIssue2.length; c++) {
+ 	for (c = 0; c < articlesIssue2.length; c++) {
  		var frame2 = articlesIssue2[c];
  		var displayValue2 = window.getComputedStyle(frame2, null).display;
  		if (displayValue2 === "block") {
