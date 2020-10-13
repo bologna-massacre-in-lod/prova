@@ -180,7 +180,7 @@ function nextArticle2() {
  	var articlesIssue1 = document.getElementById("issue1").children;
  	var i;
 
- 	for (i = articlesIssue1.length-1; i > 0; i--) { /* i > 1 perché non vogliamo considerare la cover */
+ 	for (i = articlesIssue1.length-1; i >= 0; i--) { /* i > 1 perché non vogliamo considerare la cover */
  		var frame1 = articlesIssue1[i];
  		var displayValue1 = window.getComputedStyle(frame1, null).display;
  		if (displayValue1 === "block") {
