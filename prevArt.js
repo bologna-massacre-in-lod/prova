@@ -192,7 +192,7 @@ function nextArticle2() {
  	var articlesIssue2 = document.getElementById("issue2").children;
  	var c;
 
- 	for (c = articlesIssue1.length-1; c > 1; c--) {
+ 	for (c = 0; c < articlesIssue1.length-1; c++) {
  		var frame2 = articlesIssue2[c];
  		var displayValue2 = window.getComputedStyle(frame2, null).display;
  		if (displayValue2 === "block") {
