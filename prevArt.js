@@ -180,7 +180,7 @@ function nextArticle2() {
  	var articlesIssue1 = document.getElementById("issue1").children;
  	var i;
 
- 	for (i = 1; i < articlesIssue1.length; i++) { /* i = 1 perché non vogliamo considerare la cover */
+ 	for (i = articlesIssue1.length-1; i > 1; i--) { /* i > 1 perché non vogliamo considerare la cover */
  		var frame1 = articlesIssue1[i];
  		var displayValue1 = window.getComputedStyle(frame1, null).display;
  		if (displayValue1 === "block") {
@@ -192,7 +192,7 @@ function nextArticle2() {
  	var articlesIssue2 = document.getElementById("issue2").children;
  	var c;
 
- 	for (c = 2; c < articlesIssue2.length; c++) {
+ 	for (c = articlesIssue1.length-1; c > 1; c--) {
  		var frame2 = articlesIssue2[c];
  		var displayValue2 = window.getComputedStyle(frame2, null).display;
  		if (displayValue2 === "block") {
@@ -202,13 +202,13 @@ function nextArticle2() {
  	}
  }
 
- 
+
 
  function nextArticlee() {
 	var articles = document.getElementsByClassName("article");
 	var i;
 
-	for (i = 1; i < articles.length; i++) { /* i = 1 perché non vogliamo considerare la cover */
+	for (i = articlesIssue1.length-1; i > 1; i--) { /* i = 1 perché non vogliamo considerare la cover */
 		var frame = articles[i],
     		style = window.getComputedStyle(frame),
 			displayValue = style.getPropertyValue('display');
