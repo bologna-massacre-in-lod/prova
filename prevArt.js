@@ -34,9 +34,6 @@ function prevArticle1() {
 			frame.style.display = "none";
 			articles[i-1].style.display = "block";
  		}
- 		else {
-			frame.style.display = "block";
- 		}
  	}
 }
 
