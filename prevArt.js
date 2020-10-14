@@ -24,21 +24,19 @@ mostrami il frame che è alla posizione n -1
 
 function prevArticle1() {
  	var articles = document.getElementsByClassName("article"),
- 		button = document.getElementById("prev"),
  		firstArticle = document.getElementsByClassName("article1");
  	
  	for (var i = 1; i < articles.length; i++) {
  		var frame = articles[i];
- 		 		
- 		if (frame === firstArticle) {
- 			button.style.display = "none";
-  		}
-
  		var displayValue = window.getComputedStyle(frame, null).display;
- 		if (displayValue === "block") {
- 			frame.style.display = "none";
- 			articles[i-1].style.display = "block";
+ 		if (frame =! firstArticle) {
+ 			if (displayValue === "block") {
+ 				frame.style.display = "none";
+ 				articles[i-1].style.display = "block";
+ 			}
  		}
+ 		else 
+
  	}
 
  }
@@ -108,7 +106,7 @@ function prevArticle1() {
 
  function prevArt2(issueN) {
  	var articles = document.getElementsByClassName(issueN);
- 	for (var i = 0; i < articlesIssue1.length; i++) {
+ 	for (var i = 0; i < articles.length; i++) {
  		var frame = articles[i];
  		var displayValue = window.getComputedStyle(frame, null).display;
  		if (displayValue === "block") {
