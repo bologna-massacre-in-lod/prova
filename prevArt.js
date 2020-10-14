@@ -12,13 +12,13 @@ mostrami il frame che è alla posizione n -1
 
 
 function prevArticle1() {
- 	var articles = document.getElementsByClassName("article");
- 	var button = document.getElementById("prev");
- 	var i;
- 	for (i = 1; i < articles.length; i++) {
+ 	var articles = document.getElementsByClassName("article"),
+ 		button = document.getElementById("prev"),
+ 		firstArticle = document.getElementsByClassName("article1");
+ 	
+ 	for (var i = 1; i < articles.length; i++) {
  		var frame = articles[i];
- 		var firstArticle = document.getElementsByClassName("article1");
- 		
+ 		 		
  		if (frame === firstArticle) {
  			button.style.display = "none";
   		}
