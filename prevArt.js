@@ -29,11 +29,9 @@ function prevArticle1() {
  	for (var i = 1; i < articles.length; i++) {
  		var frame = articles[i];
  		var displayValue = window.getComputedStyle(frame, null).display;
- 		if (displayValue === "block") {
-			if (!(frame in firstArticles)) {
-				frame.style.display = "none";
-				articles[i-1].style.display = "block";
-			}
+ 		if (displayValue === "block" && !(frame in firstArticles)) {
+			frame.style.display = "none";
+			articles[i-1].style.display = "block";
  		}
  	}
 }
@@ -41,7 +39,7 @@ function prevArticle1() {
 
 
 
- function prevArticle2() {
+/* function prevArticle2() {
  	var articlesIssue1 = document.getElementById("issue1").children;
  	var i;
 
@@ -66,14 +64,6 @@ function prevArticle1() {
  		}
  	}
  }
-
-
-
-
-
-
-
-
 
  function prevArticle3() {
  	var articlesIssue1 = document.getElementsByClassName("articleIssue1");
@@ -100,67 +90,6 @@ function prevArticle1() {
  		}
  	}
  }
-
- function prevArt2(issueN) {
- 	var articles = document.getElementsByClassName(issueN);
- 	for (var i = 0; i < articles.length; i++) {
- 		var frame = articles[i];
- 		var displayValue = window.getComputedStyle(frame, null).display;
- 		if (displayValue === "block") {
- 			frame.style.display = "none";
- 			articles[i-1].style.display = "block";
- 		}
- 	}
-}
-
-
- function changeIssue(issueN){
-	if ('issue1' === issueN) {
-		var x = document.getElementById('issue1');
-		var y = document.getElementById('issue2');
-	} 
-	else {
-		var x = document.getElementById('issue2');
-		var y = document.getElementById('issue1');
-	}
-
-	x.style.display = "block";
-	x.children[0].style.display = "block";
-	for (var i=1; i<=3; i++) {
-		x.children[i].style.display = "none";
-	}
-	y.style.display = "none";
-
-
-	var oldArticles = document.getElementById("changeArguments").children;
-
-	for (var i=0; i<3; i++) {
-		var newArticle = document.createElement("a");
-		newArticle.setAttribute("class", "buttonArticle");
-		var n = i+1;
-	    newArticle.setAttribute("onclick", "changeArticle('article"  + n + "', '" + issueN + "')");
-	    newArticle.innerHTML = 'article'+n;
-
-	    document.getElementById("changeArguments").replaceChild(newArticle, oldArticles[i]);
-    	}
-}
-
-
-
-function changeArticle(articleNum, issueNum){
-	var c = document.getElementById(issueNum).children;
-	c[0].style.display = "none";
-	for (var i=1; i<=3; i++) {
-		if ("article" + i === articleNum) {
-			c[i].style.display = "block";
-		}
-		else {
-			c[i].style.display = "none";
-		}
-	}	
-}
-
-
 
 
 
@@ -201,24 +130,6 @@ function prevArticle5() {
 }
 
 
-function prevArticle() {
-	var articles = document.getElementsByClassName("article");
-
-	for (var i = 1; i < articles.length; i++) {
-		var articleDiv = articles[i],
-    		style = window.getComputedStyle(articleDiv),
-			visibilityValue = style.getPropertyValue('visibility');
-		if (visibilityValue === "visible") {
-			articleDiv.style.visibility='hidden';
-			articles[i-1].style.visibility = 'visible';
-		}
-
-	}
-
-
-}
-
-
 function prevArticlee() {
 	var articles = document.getElementsByTagName("iframe"); 
 	var i;
@@ -246,7 +157,7 @@ function changeArt(iframeNum){
 		}
 }
 
-
+*/
 
 
 function nextArticle2() {
@@ -276,14 +187,12 @@ function nextArticle2() {
  }
 
 
-
-
-
+/*
 function nextArticlee() {
 	var articles = document.getElementsByClassName("article");
 	var i;
 
-	for (i = articlesIssue1.length-1; i > 1; i--) { /* i = 1 perché non vogliamo considerare la cover */
+	for (i = articlesIssue1.length-1; i > 1; i--) { /* i = 1 perché non vogliamo considerare la cover
 		var frame = articles[i],
     		style = window.getComputedStyle(frame),
 			displayValue = style.getPropertyValue('display');
@@ -292,4 +201,4 @@ function nextArticlee() {
 			articles[i+1].style.display = 'block';
 		}
 	}
-}
+} */
