@@ -27,7 +27,7 @@ function prevArticle1() {
  	var articles = document.getElementsByClassName("article"),
  		firstArticles = document.getElementsByClassName("article1");
  	
- 	for (var i = 1; i < articles.length; i++) {
+ 	for (var i = 0; i < articles.length; i++) {
  		var frame = articles[i];
  		var displayValue = window.getComputedStyle(frame, null).display;
  		if (displayValue === "block" && !(frame in firstArticles)) {
