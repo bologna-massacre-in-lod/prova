@@ -251,6 +251,7 @@ function changeArt(iframeNum){
 
 
 
+
 function nextArticle2() {
  	var articlesIssue1 = document.getElementById("issue1").children;
  	var i;
@@ -278,8 +279,10 @@ function nextArticle2() {
  }
 
 
+ 
 
- function nextArticlee() {
+
+function nextArticlee() {
 	var articles = document.getElementsByClassName("article");
 	var i;
 
