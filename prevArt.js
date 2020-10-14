@@ -23,6 +23,21 @@ mostrami il frame che è alla posizione n -1
  }
 
 
+// function prevArticle1() {
+//  	var articles = document.getElementsByClassName("article"),
+//  		firstArticles = document.getElementsByClassName("article1");
+ 	
+//  	for (var i = 1; i < articles.length; i++) {  i= 1 perché non voglio considerare il primo articolo 
+//  		var frame = articles[i];
+//  		var displayValue = window.getComputedStyle(frame, null).display;
+//  		if (displayValue === "block" && !(frame in firstArticles)) {
+// 			frame.style.display = "none";
+// 			articles[i-1].style.display = "block";
+//  		}
+//  	}
+// }
+
+
 function prevArticle1() {
  	var articles = document.getElementsByClassName("article"),
  		firstArticles = document.getElementsByClassName("article1");
@@ -30,11 +45,17 @@ function prevArticle1() {
  	for (var i = 1; i < articles.length; i++) { /* i= 1 perché non voglio considerare il primo articolo */
  		var frame = articles[i];
  		var displayValue = window.getComputedStyle(frame, null).display;
- 		if (displayValue === "block" && !(frame in firstArticles)) {
-			frame.style.display = "none";
-			articles[i-1].style.display = "block";
- 		}
- 	}
+		if (displayValue === "block") {
+			if (frame in firstArticles) {
+				frame.style.display = "block";
+			}
+			else {
+				frame.style.display = "none";
+				articles[i-1].style.display = "block";
+			}
+		}
+	}
+ 		
 }
 
 
