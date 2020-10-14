@@ -192,7 +192,7 @@ function nextArticlee() {
 	var articles = document.getElementsByClassName("article");
 	var i;
 
-	for (i = articles.length-1; i > 0; i--) { /* i > 0 perché non vogliamo considerare la cover */
+	for (i = articles.length-1; i >= 0; i--) {
 		var frame = articles[i],
     		style = window.getComputedStyle(frame),
 			displayValue = style.getPropertyValue('display');
