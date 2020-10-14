@@ -58,6 +58,7 @@ function prevArticle1() {
  		
 }*/
 
+/* mi dà unexpected token per "!" però funziona comunque ?? */
 function prevArticle1() {
  	var articles = document.getElementsByClassName("article");
  	
