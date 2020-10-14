@@ -9,6 +9,17 @@ data n = posizione dell'articolo mostrato all'interno dei figli dell'issue
 mostrami il frame che è alla posizione n -1
 
  */
+ function hide() { /* si ma quando viene triggerata sta funzione?? */
+ 	var articles = document.getElementsByClassName("article"),
+ 		firstArticle = document.getElementsByClassName("article1");
+ 	
+ 	for (var i = 1; i < articles.length; i++) {
+ 		var frame = articles[i]; 		 		
+ 		if (frame === firstArticle) {
+ 			button.style.display = "none";
+  		}
+ 	}
+ }
 
 
 function prevArticle1() {
@@ -94,6 +105,65 @@ function prevArticle1() {
  		}
  	}
  }
+
+ function prevArt2(issueN) {
+ 	var articles = document.getElementsByClassName(issueN);
+ 	for (var i = 0; i < articlesIssue1.length; i++) {
+ 		var frame = articles[i];
+ 		var displayValue = window.getComputedStyle(frame, null).display;
+ 		if (displayValue === "block") {
+ 			frame.style.display = "none";
+ 			articles[i-1].style.display = "block";
+ 		}
+ 	}
+}
+
+
+ function changeIssue(issueN){
+	if ('issue1' === issueN) {
+		var x = document.getElementById('issue1');
+		var y = document.getElementById('issue2');
+	} 
+	else {
+		var x = document.getElementById('issue2');
+		var y = document.getElementById('issue1');
+	}
+
+	x.style.display = "block";
+	x.children[0].style.display = "block";
+	for (var i=1; i<=3; i++) {
+		x.children[i].style.display = "none";
+	}
+	y.style.display = "none";
+
+
+	var oldArticles = document.getElementById("changeArguments").children;
+
+	for (var i=0; i<3; i++) {
+		var newArticle = document.createElement("a");
+		newArticle.setAttribute("class", "buttonArticle");
+		var n = i+1;
+	    newArticle.setAttribute("onclick", "changeArticle('article"  + n + "', '" + issueN + "')");
+	    newArticle.innerHTML = 'article'+n;
+
+	    document.getElementById("changeArguments").replaceChild(newArticle, oldArticles[i]);
+    	}
+}
+
+
+
+function changeArticle(articleNum, issueNum){
+	var c = document.getElementById(issueNum).children;
+	c[0].style.display = "none";
+	for (var i=1; i<=3; i++) {
+		if ("article" + i === articleNum) {
+			c[i].style.display = "block";
+		}
+		else {
+			c[i].style.display = "none";
+		}
+	}	
+}
 
 
 
