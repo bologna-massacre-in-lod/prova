@@ -29,13 +29,13 @@ function prevArticle1() {
  	for (var i = 1; i < articles.length; i++) {
  		var frame = articles[i];
  		var displayValue = window.getComputedStyle(frame, null).display;
- 		if (frame =! firstArticle) {
+ 		if (!(frame in firstArticles)) {
  			if (displayValue === "block") {
  				frame.style.display = "none";
  				articles[i-1].style.display = "block";
  			}
  		}
- 		else {
+ 		
 
  	}
 
