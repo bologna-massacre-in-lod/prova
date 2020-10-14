@@ -24,7 +24,7 @@ mostrami il frame che è alla posizione n -1
 
 function prevArticle1() {
  	var articles = document.getElementsByClassName("article"),
- 		firstArticle = document.getElementsByClassName("article1");
+ 		firstArticles = document.getElementsByClassName("article1");
  	
  	for (var i = 1; i < articles.length; i++) {
  		var frame = articles[i];
@@ -35,7 +35,7 @@ function prevArticle1() {
  				articles[i-1].style.display = "block";
  			}
  		}
- 		else 
+ 		else {
 
  	}
 
