@@ -9,20 +9,18 @@ data n = posizione dell'articolo mostrato all'interno dei figli dell'issue
 mostrami il frame che è alla posizione n -1
 
 
-
- function hide() { /* si ma quando viene triggerata sta funzione?? probabilmente deve essere eseguita prima della funzione prev article, ma dopo (o dentro) le funzioni changeissue e changearticle
- 	var articles = document.getElementsByClassName("article"),
- 		firstArticle = document.getElementsByClassName("article1");
- 	
- 	for (var i = 1; i < articles.length; i++) {
- 		var frame = articles[i]; 		 		
- 		if (frame === firstArticle) {
- 			button.style.display = "none";
-  		}
- 	}
+*/
+ function hidePrev() { /* si ma quando viene triggerata sta funzione?? probabilmente deve essere eseguita prima della funzione prev article, ma dopo (o dentro) le funzioni changeissue e changearticle*/
+ 	document.getElementById("prev").style.display = "none";
  }
- */
 
+ function hideNext() {
+ 	document.getElementById("next").style.display = "none";
+ }
+
+
+ 
+/*
 // function prevArticle1() {   
 //  	var articles = document.getElementsByClassName("article"),
 //  		firstArticles = document.getElementsByClassName("article1");
