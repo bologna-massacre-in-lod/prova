@@ -38,27 +38,7 @@ mostrami il frame che è alla posizione n -1
 // }
 
 
-/* QUESTA FUNZIONA:
-function prevArticle1() {
- 	var articles = document.getElementsByClassName("article");
- 	
- 	for (var i = 1; i < articles.length; i++) { /* i= 1 perché non voglio considerare il primo articolo
- 		var frame = articles[i];
- 		var displayValue = window.getComputedStyle(frame, null).display;
-		if (displayValue === "block") {
-			if (frame.classList.contains('article1')) {
-				frame.style.display = "block";
-			}
-			else {
-				frame.style.display = "none";
-				articles[i-1].style.display = "block";
-			}
-		}
-	}
- 		
-}*/
-
-/* mi dà unexpected token per "!" però funziona comunque ?? */
+/* MIGLIORE:  */
 function prevArticle1() {
  	var articles = document.getElementsByClassName("article");
  	
@@ -229,15 +209,16 @@ function nextArticle2() {
 
 function nextArticlee() {
 	var articles = document.getElementsByClassName("article");
-	var i;
 
-	for (i = articles.length-1; i >= 0; i--) {
+	for (var i = articles.length-2; i >= 0; i--) { /* articles length = 6, ma noi non vogliamo considerare l'ultimo quindi mettiamo articles.lenght - 2 (con -1 considera anche l'ultimo perché lenght - 1 = 5 e articles[5] è l'ultimo articolo) */
 		var frame = articles[i],
     		style = window.getComputedStyle(frame),
 			displayValue = style.getPropertyValue('display');
 		if (displayValue === 'block') {
-			frame.style.display='none';
-			articles[i+1].style.display = 'block';
+			if (!(frame.classList.contains('article3'))) { /* IMPORTANTE: qua ho messo che la classe dell'ultimo articolo è "article3" ma nel sito finale sarà ARTICLE5*/
+				frame.style.display='none';
+				articles[i+1].style.display = 'block';
+			}
 		}
 	}
-} 
+}
