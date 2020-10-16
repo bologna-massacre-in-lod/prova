@@ -66,7 +66,7 @@ function prevArticle1() {
  		var frame = articles[i];
  		var displayValue = window.getComputedStyle(frame, null).display;
 		if (displayValue === "block") {
-			if !(frame.classList.contains('article1')) {
+			if (!(frame.classList.contains('article1'))) {
 				frame.style.display = "none";
 				articles[i-1].style.display = "block";
 			}
