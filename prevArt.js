@@ -8,9 +8,9 @@ OPPURE
 data n = posizione dell'articolo mostrato all'interno dei figli dell'issue
 mostrami il frame che è alla posizione n -1
 
- */
 
- function hide() { /* si ma quando viene triggerata sta funzione?? probabilmente deve essere eseguita prima della funzione prev article, ma dopo (o dentro) le funzioni changeissue e changearticle*/
+
+ function hide() { /* si ma quando viene triggerata sta funzione?? probabilmente deve essere eseguita prima della funzione prev article, ma dopo (o dentro) le funzioni changeissue e changearticle
  	var articles = document.getElementsByClassName("article"),
  		firstArticle = document.getElementsByClassName("article1");
  	
@@ -21,7 +21,7 @@ mostrami il frame che è alla posizione n -1
   		}
  	}
  }
-
+ */
 
 // function prevArticle1() {   
 //  	var articles = document.getElementsByClassName("article"),
@@ -39,7 +39,7 @@ mostrami il frame che è alla posizione n -1
 
 
 /* MIGLIORE:  */
-function prevArticle1() {
+function prevArticle() {
  	var articles = document.getElementsByClassName("article");
  	
  	for (var i = 1; i < articles.length; i++) { /* i= 1 perché non voglio considerare il primo articolo */
@@ -180,11 +180,11 @@ function changeArt(iframeNum){
 */
 
 
-function nextArticle2() {
+/*function nextArticle2() {
  	var articlesIssue1 = document.getElementById("issue1").children;
  	var i;
 
- 	for (i = articlesIssue1.length-1; i >= 0; i--) { /* i > 1 perché non vogliamo considerare la cover */
+ 	for (i = articlesIssue1.length-1; i >= 0; i--) { /* i > 1 perché non vogliamo considerare la cover 
  		var frame1 = articlesIssue1[i];
  		var displayValue1 = window.getComputedStyle(frame1, null).display;
  		if (displayValue1 === "block") {
@@ -204,10 +204,10 @@ function nextArticle2() {
  			articlesIssue2[c+1].style.display = "block";
  		}
  	}
- }
+ }*/
 
 
-function nextArticlee() {
+function nextArticle() {
 	var articles = document.getElementsByClassName("article");
 
 	for (var i = articles.length-2; i >= 0; i--) { /* articles length = 6, ma noi non vogliamo considerare l'ultimo quindi mettiamo articles.lenght - 2 (con -1 considera anche l'ultimo perché lenght - 1 = 5 e articles[5] è l'ultimo articolo) */
