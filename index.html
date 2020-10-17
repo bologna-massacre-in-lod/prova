@@ -129,31 +129,34 @@
 		  	<li class="dropdown"><a class="dropbtn">Issues</a>
 		  		<div class="dropdown-content">
 		      		<li class="dropdown"><a class="dropbtn buttonIssue" onclick="changeIssue('issue1')">Issue 1</a>
-		      			<div class="dropdown-content">
+		      			<div class="dropdown-content changeArguments">
 		      				<a>Cover page</a>
-		      				<a>Article 1</a>
-		      				<a>Article 2</a>
-		      				<a>Article 3</a>
-		      				<a>Article 4</a>
-		      				<a>Article 5</a>
+		      				<a class="buttonArticle" onclick="changeArticle(); hidePrev()">Article 1</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
+		      				<a class="buttonArticle" onclick="changeArticle(); hideNext()">Article 5</a>
+		      			</div>
 		      		</li>
 		      		<li class="dropdown"><a class="dropbtn buttonIssue" onclick="changeIssue('issue2')">Issue 2</a>
-		      			<div class="dropdown-content">
+		      			<div class="dropdown-content changeArguments">
 		      				<a>Cover page</a>
-		      				<a>Article 1</a>
-		      				<a>Article 2</a>
-		      				<a>Article 3</a>
-		      				<a>Article 4</a>
-		      				<a>Article 5</a>
+		      				<a class="buttonArticle" onclick="changeArticle(); hidePrev()">Article 1</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
+		      				<a class="buttonArticle" onclick="changeArticle(); hideNext()">Article 5</a>
+		      			</div>
 		      		</li>
 		      		<li class="dropdown"><a class="dropbtn">Issue 3</a>
-		      			<div class="dropdown-content">
+		      			<div class="dropdown-content changeArguments">
 		      				<a>Cover page</a>
-		      				<a>Article 1</a>
-		      				<a>Article 2</a>
-		      				<a>Article 3</a>
-		      				<a>Article 4</a>
-		      				<a>Article 5</a>
+		      				<a class="buttonArticle" onclick="changeArticle(); hidePrev()">Article 1</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
+		      				<a class="buttonArticle" onclick="changeArticle(); hideNext()">Article 5</a>
+		      			</div>
 		      		</li>
 		    	</div>
 		  	</li>
@@ -170,7 +173,7 @@
 					<a>2021-2025 (screen + print)</a>
 				</div>
 		  	</li>
-		  	<li><a>Origin</a></li>
+		  	<li><a class="buttonIssue" id="Origin">Origin</a></li>
 		</ul>
 		<script src="PROVA_js.js"></script>
 		
@@ -189,10 +192,6 @@
 
 		</div>
 		
-		<!-- bottoni per andare all'articolo di origine del testo -->
-
-		<a class="buttonIssue" id="Origin">Origin</a>
-		<script src="PROVA_js.js"></script>
 		
 		<!-- bottone per articolo precedente -->
 		<button id="prev" onclick="prevArticle()"/>previous</button>
