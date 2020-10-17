@@ -14,10 +14,6 @@
 			  width: 100%; */
 			}
 
-			li#prev {
-			  float: left;
-			}
-
 			li a, .dropbtn {
 			  display: inline-block;
 			  color: black;
@@ -78,6 +74,20 @@
 			  display: block;
 			}
 
+			#center {
+			  text-align: center;
+			}
+
+			#left {
+			  margin-right: 20%;
+			  text-align: center;
+			}
+
+			#right {
+			  margin-left: 20%;
+			  text-align: center;
+			}
+
 		</style>
 
 		<title></title>
@@ -91,56 +101,62 @@
 	<body>
 
 		<ul id="selectorNav">
-			<li id="prev" onclick="prevArticle()"><i class="fas fa-chevron-left"></i></li>
-		  	<li class="dropdown"><a class="dropbtn">Issues</a>
-		  		<div class="dropdown-content">
-		      		<li class="dropdown"><a class="dropbtn buttonIssue" onclick="changeIssue('issue1')">Issue 1</a>
-		      			<div class="dropdown-content changeArguments">
-		      				<a class="buttonIssue" onclick="changeIssue('issue1')">Cover page</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 1</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 5</a>
-		      			</div>
-		      		</li>
-		      		<li class="dropdown"><a class="dropbtn buttonIssue" onclick="changeIssue('issue2')">Issue 2</a>
-		      			<div class="dropdown-content changeArguments">
-		      				<a class="buttonIssue" onclick="changeIssue('issue2')">Cover page</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 1</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 5</a>
-		      			</div>
-		      		</li>
-		      		<li class="dropdown"><a class="dropbtn">Issue 3</a>
-		      			<div class="dropdown-content changeArguments">
-		      				<a class="buttonIssue">Cover page</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 1</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
-		      				<a class="buttonArticle" onclick="changeArticle()">Article 5</a>
-		      			</div>
-		      		</li>
-		    	</div>
-		  	</li>
-			<!-- <li><a href="#news">Disclaimer</a></li> -->
-		  	<li class="dropdown"><a class="dropbtn">Themes</a>
-				<div class="dropdown-content">
-					<a href="#" onclick="changeCSS('PROVA_CSS.css', 0);">Stile di prova 1</a>
-					<a href="#" onclick="changeCSS('PROVA2_CSS.css', 0);">Stile di prova 2</a>
-					<a>Between 1500 and 1800</a>
-					<a>XIX Century</a>
-					<a>First half of XX Century</a>
-					<a>Second half of XX Century</a>
-					<a>Late XX Century - Start of XXI Century (print)</a>
-					<a>2021-2025 (screen + print)</a>
-				</div>
-		  	</li>
-		  	<li><a class="buttonIssue" id="Origin">Origin</a></li>
-		  	<li id="next" onclick="nextArticle()"><i class="fas fa-chevron-right"></i></li>
+			<div id="left">
+				<li id="prev" onclick="prevArticle()"><i class="fas fa-chevron-left"></i></li>
+			</div>
+			<div id="center">
+			  	<li class="dropdown"><a class="dropbtn">Issues</a>
+			  		<div class="dropdown-content">
+			      		<li class="dropdown"><a class="dropbtn buttonIssue" onclick="changeIssue('issue1')">Issue 1</a>
+			      			<div class="dropdown-content changeArguments">
+			      				<a class="buttonIssue" onclick="changeIssue('issue1')">Cover page</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 1</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 5</a>
+			      			</div>
+			      		</li>
+			      		<li class="dropdown"><a class="dropbtn buttonIssue" onclick="changeIssue('issue2')">Issue 2</a>
+			      			<div class="dropdown-content changeArguments">
+			      				<a class="buttonIssue" onclick="changeIssue('issue2')">Cover page</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 1</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 5</a>
+			      			</div>
+			      		</li>
+			      		<li class="dropdown"><a class="dropbtn">Issue 3</a>
+			      			<div class="dropdown-content changeArguments">
+			      				<a class="buttonIssue">Cover page</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 1</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
+			      				<a class="buttonArticle" onclick="changeArticle()">Article 5</a>
+			      			</div>
+			      		</li>
+			    	</div>
+			  	</li>			
+				<!-- <li><a href="#news">Disclaimer</a></li> -->
+			  	<li class="dropdown"><a class="dropbtn">Themes</a>
+					<div class="dropdown-content">
+						<a href="#" onclick="changeCSS('PROVA_CSS.css', 0);">Stile di prova 1</a>
+						<a href="#" onclick="changeCSS('PROVA2_CSS.css', 0);">Stile di prova 2</a>
+						<a>Between 1500 and 1800</a>
+						<a>XIX Century</a>
+						<a>First half of XX Century</a>
+						<a>Second half of XX Century</a>
+						<a>Late XX Century - Start of XXI Century (print)</a>
+						<a>2021-2025 (screen + print)</a>
+					</div>
+			  	</li>
+			  	<li><a class="buttonIssue" id="Origin">Origin</a></li>
+			</div>
+			<div id="right">
+		  		<li id="next" onclick="nextArticle()"><i class="fas fa-chevron-right"></i></li>
+		  	</div>
 		</ul>
 		<script src="PROVA_js.js"></script>
 		
