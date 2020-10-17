@@ -130,7 +130,7 @@
 		  		<div class="dropdown-content">
 		      		<li class="dropdown"><a class="dropbtn buttonIssue" onclick="changeIssue('issue1')">Issue 1</a>
 		      			<div class="dropdown-content changeArguments">
-		      				<a>Cover page</a>
+		      				<a class="buttonIssue" onclick="changeIssue('issue1')">Cover page</a>
 		      				<a class="buttonArticle" onclick="changeArticle(); hidePrev()">Article 1</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
@@ -140,7 +140,7 @@
 		      		</li>
 		      		<li class="dropdown"><a class="dropbtn buttonIssue" onclick="changeIssue('issue2')">Issue 2</a>
 		      			<div class="dropdown-content changeArguments">
-		      				<a>Cover page</a>
+		      				<a class="buttonIssue" onclick="changeIssue('issue2')">Cover page</a>
 		      				<a class="buttonArticle" onclick="changeArticle(); hidePrev()">Article 1</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
@@ -150,7 +150,7 @@
 		      		</li>
 		      		<li class="dropdown"><a class="dropbtn">Issue 3</a>
 		      			<div class="dropdown-content changeArguments">
-		      				<a>Cover page</a>
+		      				<a class="buttonIssue">Cover page</a>
 		      				<a class="buttonArticle" onclick="changeArticle(); hidePrev()">Article 1</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
@@ -177,31 +177,29 @@
 		</ul>
 		<script src="PROVA_js.js"></script>
 		
+		<!-- al posto di <li><a>issues</a></li> che contiene le issues e i rispettivi articoli, mettere due bottoni distinti, uno "issues" e uno "articles" per tenere intatta la struttura delle funzioni di changeIssue e changeArticle
 
-
-		<!-- bottoni per cambiare articolo -->
-
-		<div id="changeArguments">
-
+		<li class="dropdown"><a class="dropbtn">Issues</a>
+			<a class="buttonIssue" onclick="changeIssue('issue1')">Issue 1</a>
+			<a class="buttonIssue" onclick="changeIssue('issue2')">Issue 2</a>
+			<a>Issue 3</a>
+		</li>
+		<li class="dropdown" id="changeArguments"><a class="dropbtn">Articles</a>
 			<a class="buttonArticle" onclick="changeArticle(); hidePrev()">Article 1</a>
 			<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
-			<a class="buttonArticle" onclick="changeArticle(); hideNext()">Article 3</a>
-			<script src="PROVA_js.js"></script>
-			<br>
-			<br>
+			<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
+			<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
+		    <a class="buttonArticle" onclick="changeArticle(); hideNext()">Article 5</a>
+		</li>
+		<script src="PROVA_js.js"></script>
 
-		</div>
+		-->
 		
 		
 		<!-- bottone per articolo precedente -->
 		<button id="prev" onclick="prevArticle()"/>previous</button>
 		<button id="next" onclick="nextArticle()"/>next</button>
 		<script src="prevArt.js"></script>
-
-		
-		<!-- testo prova -->
-
-		<p>woeihfòiwueHGFòIUwgeògiWòEIGUHwòoeughwueg</p>
 
 
 		<!-- issue 1 -->
