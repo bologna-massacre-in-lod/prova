@@ -2,45 +2,6 @@
 <html>
 	<head>
 		<style>
-			/*
-			.buttonStyle {
-			  background-color: #4CAF50;
-			  border: none;
-			  color: white;
-			  padding: 15px 32px;
-			  text-align: center;
-			  text-decoration: none;
-			  display: inline-block;
-			  font-size: 16px;
-			  margin: 4px 2px;
-			  cursor: pointer;
-			}
-			.buttonIssue {
-			  background-color: #4CAF50;
-			  border: none;
-			  color: white;
-			  padding: 15px 32px;
-			  text-align: center;
-			  text-decoration: none;
-			  display: inline-block;
-			  font-size: 16px;
-			  margin: 4px 2px;
-			  cursor: pointer;
-			}
-			.buttonArticle {
-			  background-color: #4CAF50;
-			  border: none;
-			  color: white;
-			  padding: 15px 32px;
-			  text-align: center;
-			  text-decoration: none;
-			  display: inline-block;
-			  font-size: 16px;
-			  margin: 4px 2px;
-			  cursor: pointer;
-			}
-			*/
-
 			/* styling selector navbar */
 
 			ul {
@@ -53,8 +14,8 @@
 			  width: 100%; */
 			}
 
-			li {
-			  /* float: left; */
+			li#prev {
+			  float: left;
 			}
 
 			li a, .dropbtn {
@@ -118,44 +79,49 @@
 			}
 
 		</style>
+
 		<title></title>
-		
-		<link rel="stylesheet" type="text/css" href="cicciopasticcio.css">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	</head>
+
+
+
 	<body>
 
 		<ul id="selectorNav">
+			<li id="prev" onclick="prevArticle()"><i class="fas fa-chevron-left"></i></li>
 		  	<li class="dropdown"><a class="dropbtn">Issues</a>
 		  		<div class="dropdown-content">
 		      		<li class="dropdown"><a class="dropbtn buttonIssue" onclick="changeIssue('issue1')">Issue 1</a>
 		      			<div class="dropdown-content changeArguments">
 		      				<a class="buttonIssue" onclick="changeIssue('issue1')">Cover page</a>
-		      				<a class="buttonArticle" onclick="changeArticle(); hidePrev()">Article 1</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 1</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
-		      				<a class="buttonArticle" onclick="changeArticle(); hideNext()">Article 5</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 5</a>
 		      			</div>
 		      		</li>
 		      		<li class="dropdown"><a class="dropbtn buttonIssue" onclick="changeIssue('issue2')">Issue 2</a>
 		      			<div class="dropdown-content changeArguments">
 		      				<a class="buttonIssue" onclick="changeIssue('issue2')">Cover page</a>
-		      				<a class="buttonArticle" onclick="changeArticle(); hidePrev()">Article 1</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 1</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
-		      				<a class="buttonArticle" onclick="changeArticle(); hideNext()">Article 5</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 5</a>
 		      			</div>
 		      		</li>
 		      		<li class="dropdown"><a class="dropbtn">Issue 3</a>
 		      			<div class="dropdown-content changeArguments">
 		      				<a class="buttonIssue">Cover page</a>
-		      				<a class="buttonArticle" onclick="changeArticle(); hidePrev()">Article 1</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 1</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
 		      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
-		      				<a class="buttonArticle" onclick="changeArticle(); hideNext()">Article 5</a>
+		      				<a class="buttonArticle" onclick="changeArticle()">Article 5</a>
 		      			</div>
 		      		</li>
 		    	</div>
@@ -174,6 +140,7 @@
 				</div>
 		  	</li>
 		  	<li><a class="buttonIssue" id="Origin">Origin</a></li>
+		  	<li id="next" onclick="nextArticle()"><i class="fas fa-chevron-right"></i></li>
 		</ul>
 		<script src="PROVA_js.js"></script>
 		
@@ -195,12 +162,6 @@
 
 		-->
 		
-		
-		<!-- bottone per articolo precedente -->
-		<button id="prev" onclick="prevArticle()"/>previous</button>
-		<button id="next" onclick="nextArticle()"/>next</button>
-		<script src="prevArt.js"></script>
-
 
 		<!-- issue 1 -->
 
