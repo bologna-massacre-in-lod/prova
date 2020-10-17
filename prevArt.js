@@ -15,8 +15,9 @@ mostrami il frame che è alla posizione n -1
  }
 
  function hideNext() {
- 	document.getElementById("next").style.display = "none";
+ 	document.getElementById('next').setAttribute("style","visibility:hidden");
  }
+
 
 
  
