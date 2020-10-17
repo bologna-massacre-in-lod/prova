@@ -10,6 +10,7 @@ mostrami il frame che è alla posizione n -1
 
 
 */
+
  function hidePrev() { /* si ma quando viene triggerata sta funzione?? probabilmente deve essere eseguita prima della funzione prev article, ma dopo (o dentro) le funzioni changeissue e changearticle*/
  	document.getElementById("prev").style.display = "none";
  }
@@ -17,7 +18,6 @@ mostrami il frame che è alla posizione n -1
  function hideNext() {
  	document.getElementById('next').setAttribute("style","visibility:hidden");
  }
-
 
 
  
