@@ -3,45 +3,6 @@
 	<head>
 		<style>
 
-			/*
-			.buttonStyle {
-			  background-color: #4CAF50;
-			  border: none;
-			  color: white;
-			  padding: 15px 32px;
-			  text-align: center;
-			  text-decoration: none;
-			  display: inline-block;
-			  font-size: 16px;
-			  margin: 4px 2px;
-			  cursor: pointer;
-			}
-			.buttonIssue {
-			  background-color: #4CAF50;
-			  border: none;
-			  color: white;
-			  padding: 15px 32px;
-			  text-align: center;
-			  text-decoration: none;
-			  display: inline-block;
-			  font-size: 16px;
-			  margin: 4px 2px;
-			  cursor: pointer;
-			}
-			.buttonArticle {
-			  background-color: #4CAF50;
-			  border: none;
-			  color: white;
-			  padding: 15px 32px;
-			  text-align: center;
-			  text-decoration: none;
-			  display: inline-block;
-			  font-size: 16px;
-			  margin: 4px 2px;
-			  cursor: pointer;
-			}
-			*/
-
 			/* styling selector navbar */
 
 			ul {
@@ -118,6 +79,35 @@
 			  display: block;
 			}
 
+
+			.button {
+			    background: rgba(0,0,0,0.7);
+			    font-size: 15px;
+			    color: #000000;
+			    margin: 0;
+			    padding: 0;
+			    border: 0;
+			    cursor: pointer;
+			    padding: 10px 5px;
+			    width:25px;
+			    text-align: center;
+			    position: relative;
+    			display: block;
+    			margin: 100px auto 25px;
+			}
+
+			/* #prev {				    
+			    right: -30px; 
+			    top: -15px;
+			}
+
+			#next {				    
+			    left: -30px; 
+			}
+			*/
+
+
+
 			#grid-container {
 				display: grid;
 				grid-template-areas:
@@ -132,24 +122,11 @@
 				grid-template-rows: 50px 1fr 50px;*/
 			}
 
-			/* #grid-container > div {
-				background-color: grey;
-				padding: 20px 0;
+			#content { 
+				grid-area: main;
+				display: flex;
+  				align-items: center;
 			}
-
-			stile dei due div contenitori sia degli articoli che del metadata viewer
-			.split {
-			  height: 90%;
-			  width: 50%;
-			  position: fixed;
-			  z-index: 1;
-			  top: 0;
-			  overflow-x: hidden;
-			  padding-top: 20px;
-			  bottom: 0;
-			}
-			*/
-			#content { grid-area: main; }
 
 			#metadata { grid-area: side; }
 
