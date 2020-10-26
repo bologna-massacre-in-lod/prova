@@ -2,6 +2,47 @@
 <html>
 	<head>
 		<style>
+			
+			body{margin:0px;}
+				
+			/*
+			.buttonStyle {
+			  background-color: #4CAF50;
+			  border: none;
+			  color: white;
+			  padding: 15px 32px;
+			  text-align: center;
+			  text-decoration: none;
+			  display: inline-block;
+			  font-size: 16px;
+			  margin: 4px 2px;
+			  cursor: pointer;
+			}
+			.buttonIssue {
+			  background-color: #4CAF50;
+			  border: none;
+			  color: white;
+			  padding: 15px 32px;
+			  text-align: center;
+			  text-decoration: none;
+			  display: inline-block;
+			  font-size: 16px;
+			  margin: 4px 2px;
+			  cursor: pointer;
+			}
+			.buttonArticle {
+			  background-color: #4CAF50;
+			  border: none;
+			  color: white;
+			  padding: 15px 32px;
+			  text-align: center;
+			  text-decoration: none;
+			  display: inline-block;
+			  font-size: 16px;
+			  margin: 4px 2px;
+			  cursor: pointer;
+			}
+			*/
 
 			/* styling selector navbar */
 
@@ -61,7 +102,7 @@
 			  position: absolute;
 			  background-color: #e6e6e6;
 			  min-width: 160px;
-			  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			  box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);
 			  z-index: 1;
 			}
 
@@ -79,33 +120,6 @@
 			  display: block;
 			}
 
-
-			button {
-			    background: rgba(0,0,0,0.5);
-			    font-size: 20px;
-			    cursor: pointer;
-			    width: 20px;
-			    text-align: center;
-			    /*position: relative; */
-    			display: inline-block;
-    			border-radius: 10%;
-    			/*z-index: 1;*/
-    			/*position: absolute;*/
-    			top: 150px;
-			}
-
-			#prev {				    
-			    left: 30px;
-			    display: inline-block;
-			}
-
-			#next {				    
-			    right: 30px; 
-			    display: inline-block;
-			}
-
-
-
 			#grid-container {
 				display: grid;
 				grid-template-areas:
@@ -120,19 +134,31 @@
 				grid-template-rows: 50px 1fr 50px;*/
 			}
 
-			#content { 
-				grid-area: main;
-				/*position: relative;*/
+			/* #grid-container > div {
+				background-color: grey;
+				padding: 20px 0;
 			}
+
+			stile dei due div contenitori sia degli articoli che del metadata viewer
+			.split {
+			  height: 90%;
+			  width: 50%;
+			  position: fixed;
+			  z-index: 1;
+			  top: 0;
+			  overflow-x: hidden;
+			  padding-top: 20px;
+			  bottom: 0;
+			}
+			*/
+			#content { grid-area: main; }
 
 			#metadata { grid-area: side; }
 
 			#top { grid-area: header; }
 
-			#bottom { grid-area: footer; }
-
-			.article, iframe { 
-				display: inline-block;
+			#bottom { 
+			grid-area: footer;
 			}
                 
 		</style>
@@ -170,6 +196,44 @@
 						    <a class="buttonArticle" onclick="changeArticle(); hideNext()">Article 3</a>
 						</div>
 					</li>
+					<!-- <a class="buttonArticle" onclick="changeArticle()">Article 3</a>
+							<a class="buttonArticle" onclick="changeArticle()">Article 4</a> -->
+					
+					<!-- navbar con doppio dropdown: (problema: quando si va in hover sull'elemento <li>Issues</li>, si sovrebbero vedere solo tre elementi: issue 1, issue 2, issue 3. Solo una volte andati in hover su uno di questi tre elementi, solo allora si dovrebbero vedere gli articoli. Bisogna dare una classe specifica all'elemento <li>Issue 1</li> (come per gli altri due issue) che lo renda sia dropdown-content che dropdown container)
+				  	<li class="dropdown"><a class="dropbtn">Issues</a>
+				  		<div class="dropdown-content">
+				      		<li class="dropdown"><a class="dropbtn buttonIssue" onclick="changeIssue('issue1')">Issue 1</a>
+				      			<div class="dropdown-content changeArguments">
+				      				<a class="buttonIssue" onclick="changeIssue('issue1')">Cover page</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 1</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 5</a>
+				      			</div>
+				      		</li>
+				      		<li class="dropdown"><a class="dropbtn buttonIssue" onclick="changeIssue('issue2')">Issue 2</a>
+				      			<div class="dropdown-content changeArguments">
+				      				<a class="buttonIssue" onclick="changeIssue('issue2')">Cover page</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 1</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 5</a>
+				      			</div>
+				      		</li>
+				      		<li class="dropdown"><a class="dropbtn">Issue 3</a>
+				      			<div class="dropdown-content changeArguments">
+				      				<a class="buttonIssue">Cover page</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 1</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 4</a>
+				      				<a class="buttonArticle" onclick="changeArticle()">Article 5</a>
+				      			</div>
+				      		</li>
+				    	</div>
+				  	</li> -->
 					<!-- <li><a href="#news">Disclaimer</a></li> -->
 				  	<li class="dropdown"><a class="dropbtn">Themes</a>
 						<div class="dropdown-content">
@@ -188,11 +252,50 @@
 
 				<script src="PROVA_js.js"></script>	
 
+
+				<!--  bottoni per cambiare stile
+					
+				<a class="buttonStyle" href="#" onclick="changeCSS('PROVA_CSS.css', 0);">Style 1</a>
+				<a class="buttonStyle" href="#" onclick="changeCSS('PROVA2_CSS.css', 0);">Style 2</a>
+				<script src="PROVA_js.js"></script>
+
+				bottoni per cambiare issue
+
+				<a class="buttonIssue" onclick="changeIssue('issue1')">Issue 1</a>
+				<a class="buttonIssue" onclick="changeIssue('issue2')">Issue 2</a>
+				<script src="PROVA_js.js"></script>
+
+				bottoni per cambiare articolo
+
+				<div id="changeArguments">
+
+					<a class="buttonArticle" onclick="changeArticle()">Article 1</a>
+					<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
+					<a class="buttonArticle" onclick="changeArticle()">Article 3</a>
+					<script src="PROVA_js.js"></script>
+					<br>
+					<br>
+
+				</div>
+				
+			 	bottoni per andare all'articolo di origine del testo 
+
+				<a class="buttonIssue" id="Origin">Origin</a>
+				<a class="buttonIssue" onclick="prevArticlee()">Previous article</a>
+				<script src="PROVA_js.js"></script>-->
+				
+				
+				
+				<!-- testo prova
+
+				<p>woeihfòiwueHGFòIUwgeògiWòEIGUHwòoeughwueg</p> -->
+
 			</div> <!-- si chiude il div top in cui c'è il selector e la navbar generica -->			
 
 			<div id="content">
 				<!-- bottone per articolo precedente -->
-				<button id="prev" onclick="prevArticle()"/>&#8249;</button>
+				<button id="prev" onclick="prevArticle()"/>previous</button>
+				<button id="next" onclick="nextArticle()"/>next</button>
 				<script src="PROVA_js.js"></script>
 
 				<!-- issue 1 -->
@@ -254,10 +357,6 @@
 				    </div>
 
 		    	</div>
-
-		    	<button id="next" onclick="nextArticle()"/>&#8250;</button>
-		    	<script src="PROVA_js.js"></script>
-
 		    </div> <!-- si chiude il div content -->
 
 		    <div id="metadata">  <!-- div che contiene il metadata viewer -->
@@ -316,13 +415,14 @@
 				    bla
 				</ul>
 
-			</div> <!-- si chiude il div che contiene il metadata viewer -->
+		</div> <!-- si chiude il div che contiene il metadata viewer -->
 
-			<div id="bottom" style="text-align: justify; background: rgba(38, 38, 38); color: white;"> <!-- div che è il footer -->
-		    	<h5>© Art&amp;Life:</h5>  
-				<h5 class="mb-1">Created by Alessia Cioffi, Sara Coppini and Ariele Santello for the final project of the course <a href="https://www.unibo.it/it/didattica/insegnamenti/insegnamento/2019/424627">Information Modeling and Web Technologies</a> 
-      			<br>	
-      			held by professor Fabio Vitali within the master degree course <a href="https://corsi.unibo.it/2cycle/DigitalHumanitiesKnowledge">Digital Humanities and Digital Knowledge</a> at the <a href="https://www.unibo.it/en/homepage">University of Bologna</a>.</h5>
+		<div id="bottom"   style="text-align: justify; text-align: center; padding: 1em; background: rgba(38, 38, 38); color: white; margin-top: 0em; margin-bottom: 0em;margin-left: 0em; margin-right: 0em;"> <!-- text-align: justify; background: rgba(38, 38, 38); color: white; -->
+		    <h5>© Art&amp;Life:</h5>  
+			<h5>Created by Alessia Cioffi, Sara Coppini and Ariele Santello for the final project of the course <a href="https://www.unibo.it/it/didattica/insegnamenti/insegnamento/2019/424627">Information Modeling and Web Technologies</a> 
+      				<br>	
+     				held by professor Fabio Vitali within the master degree course <a href="https://corsi.unibo.it/2cycle/DigitalHumanitiesKnowledge">Digital Humanities and Digital Knowledge</a> at the <a href="https://www.unibo.it/en/homepage">University of Bologna</a>.
+			</h5>
       		</div>
 
       	</div> <!-- si chiude il div grid-container -->

@@ -76,8 +76,8 @@ function changeIssue(issueN){
 	var xChildren = x.children;     /*  i div che hanno class coverPage e articleN   */
 	var totLength = xChildren.length;     /* lunghezza della struttura dati dei figli di x  */
 	
-	x.style.display = "inline-block";   /* issue da mostrare  */
-	xChildren[0].style.display = "inline-block";   /* cover da mostrare  */
+	x.style.display = "block";   /* issue da mostrare  */
+	xChildren[0].style.display = "block";   /* cover da mostrare  */
 	
 	var oldArticles = document.getElementById("changeArguments").children;  /* per cambiare il contenuto delle funzioni onclick degli articoli  */
 	
@@ -125,7 +125,7 @@ function changeArticle(articleNum, issueNum){
 	c[0].style.display = "none";
 	for (var i=1; i<c.length; i++) {
 		if ("article" + i === articleNum) {
-			c[i].style.display = "inline-block";
+			c[i].style.display = "block";
 			
 			/* TORNARE AL FILE SORGENTE   */
 			var myFrame = c[i].children[0];
@@ -164,7 +164,7 @@ function changeArticleCover(articleNum, issueNum){
 	c[0].style.display = "none";
 	for (var i=1; i<=3; i++){
 		if ("article" + i === articleNum){
-			c[i].style.display = "inline-block";
+			c[i].style.display = "block";
 		}
 		else {
 			c[i].style.display = "none";
@@ -181,10 +181,10 @@ function prevArticle() {
  	for (var i = 1; i < articles.length; i++) { /* i= 1 perché non voglio considerare il primo articolo */
  		var frame = articles[i];
  		var displayValue = window.getComputedStyle(frame, null).display;
-		if (displayValue === "inline-block") {
+		if (displayValue === "block") {
 			if (!(frame.classList.contains('article1'))) {
 				frame.style.display = "none";
-				articles[i-1].style.display = "inline-block";
+				articles[i-1].style.display = "block";
 			}
 
 		}
@@ -200,10 +200,10 @@ function nextArticle() {
 		var frame = articles[i],
     		style = window.getComputedStyle(frame),
 			displayValue = style.getPropertyValue('display');
-		if (displayValue === 'inline-block') {
+		if (displayValue === 'block') {
 			if (!(frame.classList.contains('article3'))) { /* IMPORTANTE: qua ho messo che la classe dell'ultimo articolo è "article3" ma nel sito finale sarà ARTICLE5*/
 				frame.style.display='none';
-				articles[i+1].style.display = 'inline-block';
+				articles[i+1].style.display = 'block';
 			}
 		}
 	}
