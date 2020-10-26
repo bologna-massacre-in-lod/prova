@@ -76,7 +76,7 @@ function changeIssue(issueN){
 	var xChildren = x.children;     /*  i div che hanno class coverPage e articleN   */
 	var totLength = xChildren.length;     /* lunghezza della struttura dati dei figli di x  */
 	
-	x.style.display = "inline-block";   /* issue da mostrare  */
+	x.style.display = "block";   /* issue da mostrare  */
 	xChildren[0].style.display = "inline-block";   /* cover da mostrare  */
 	
 	var oldArticles = document.getElementById("changeArguments").children;  /* per cambiare il contenuto delle funzioni onclick degli articoli  */
