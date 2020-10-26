@@ -89,17 +89,18 @@
 			    position: relative;/*
     			display: block;*/
     			border-radius: 10%;
+    			z-index: 1;
+    			position: absolute;
+    			top: 50px;
 			}
 
-			/* #prev {				    
-			    right: -30px; 
-			    top: -15px;
+			#prev {				    
+			    right: 30px;
 			}
 
 			#next {				    
-			    left: -30px; 
+			    left: 30px; 
 			}
-			*/
 
 
 
@@ -119,8 +120,7 @@
 
 			#content { 
 				grid-area: main;
-				/*display: flex;
-  				align-items: center;*/
+				position: relative;
 			}
 
 			#metadata { grid-area: side; }
