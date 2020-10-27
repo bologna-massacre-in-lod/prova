@@ -55,7 +55,7 @@
 			*/
                  
 			li{
-			  display: inline-block;
+			  display: inline;
 			}
 
 			.dropdown-content {
@@ -162,7 +162,7 @@
 	<body>
 		<div id="grid-container">
 			<div id="top">
-				<div class="topnav">
+				<div class="topnav" style="background-color: #d0d0d0;">
 			        <a class="active" href="index.html">Home</a>
 			        <a href="disclaimer.html">Disclaimer</a>
 			        <a href="documentation.html">Documentation</a>
@@ -179,8 +179,8 @@
 				<button id="next" onclick="nextArticle()"/>&gt;</button>
 				<script src="PROVA_js.js"></script> -->
 				<ul id="selectorNav" style="position: relative;">
-					<li style="float:left; margin-left: -2em;"><p>&lt;</p><p>previous</p></li>
-					<div style="position: absolute; left: 50%;">
+					<li style="float:left; margin-left: -2em;">&lt;<br>previous</li>
+					<div style="position: absolute; left: 30%;">
 						<li class="dropdown"><a class="dropbtn">Issues</a>
 							<div class="dropdown-content">
 								<a class="buttonIssue" onclick="changeIssue('issue1')">Art and Society</a>
@@ -210,7 +210,7 @@
 					  	</li>
 					</div>
 				  	<li><a class="buttonIssue" id="Origin">Origin</a></li>
-				  	<li style="float:right;"><p>&gt;</p><p>next</p></li>
+				  	<li style="float:right;">&gt;<br>next</li>
 
 				</ul>
 
