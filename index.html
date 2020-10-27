@@ -162,35 +162,39 @@
 	<body>
 		<div id="grid-container">
 			<div id="top">
-				<ul id="selectorNav">
-					<li class="dropdown"><a class="dropbtn">Issues</a>
-						<div class="dropdown-content">
-							<a class="buttonIssue" onclick="changeIssue('issue1')">Art and Society</a>
-							<a class="buttonIssue" onclick="changeIssue('issue2')">Art and Covid-19</a>
-							<a>Art and Ecology</a>
-						</div>
-					</li>	
-					<li class="dropdown"><a class="dropbtn">Articles</a>
-						<div class="dropdown-content" id="changeArguments">
-							<a class="buttonArticle" onclick="changeArticle(); hidePrev()">Article 1</a>
-							<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
-						    <a class="buttonArticle" onclick="changeArticle(); hideNext()">Article 3</a>
-						</div>
-					</li>
-					<!-- <li><a href="#news">Disclaimer</a></li> -->
-				  	<li class="dropdown"><a class="dropbtn">Themes</a>
-						<div class="dropdown-content">
-							<a href="#" onclick="changeCSS('PROVA_CSS.css', 0);">Stile di prova 1</a>
-							<a href="#" onclick="changeCSS('PROVA2_CSS.css', 0);">Stile di prova 2</a>
-							<a>Between 1500 and 1800</a>
-							<a>XIX Century</a>
-							<a>First half of XX Century</a>
-							<a>Second half of XX Century</a>
-							<a>Late XX Century - Start of XXI Century (print)</a>
-							<a>2021-2025 (screen + print)</a>
-						</div>
-				  	</li>
+				<ul id="selectorNav" style="position: relative;">
+					<li style="float:left; margin-left: -2em;"><p>&lt;</p><p>previous</p></li>
+					<div style="position: absolute; left: 50%;">
+						<li class="dropdown"><a class="dropbtn">Issues</a>
+							<div class="dropdown-content">
+								<a class="buttonIssue" onclick="changeIssue('issue1')">Art and Society</a>
+								<a class="buttonIssue" onclick="changeIssue('issue2')">Art and Covid-19</a>
+								<a>Art and Ecology</a>
+							</div>
+						</li>	
+						<li class="dropdown"><a class="dropbtn">Articles</a>
+							<div class="dropdown-content" id="changeArguments">
+								<a class="buttonArticle" onclick="changeArticle(); hidePrev()">Article 1</a>
+								<a class="buttonArticle" onclick="changeArticle()">Article 2</a>
+							    <a class="buttonArticle" onclick="changeArticle(); hideNext()">Article 3</a>
+							</div>
+						</li>
+						<!-- <li><a href="#news">Disclaimer</a></li> -->
+					  	<li class="dropdown"><a class="dropbtn">Themes</a>
+							<div class="dropdown-content">
+								<a href="#" onclick="changeCSS('PROVA_CSS.css', 0);">Stile di prova 1</a>
+								<a href="#" onclick="changeCSS('PROVA2_CSS.css', 0);">Stile di prova 2</a>
+								<a>Between 1500 and 1800</a>
+								<a>XIX Century</a>
+								<a>First half of XX Century</a>
+								<a>Second half of XX Century</a>
+								<a>Late XX Century - Start of XXI Century (print)</a>
+								<a>2021-2025 (screen + print)</a>
+							</div>
+					  	</li>
+					</div>
 				  	<li><a class="buttonIssue" id="Origin">Origin</a></li>
+				  	<li style="float:right;"><p>&lt;</p><p>previous</p></li>
 
 				</ul>
 
@@ -200,9 +204,9 @@
 
 			<div id="content">
 				<!-- bottone per articolo precedente -->
-				<button id="prev" onclick="prevArticle()"/>&lt;</button>
+				<!-- <button id="prev" onclick="prevArticle()"/>&lt;</button>
 				<button id="next" onclick="nextArticle()"/>&gt;</button>
-				<script src="PROVA_js.js"></script>
+				<script src="PROVA_js.js"></script> -->
 
 				<!-- issue 1 -->
 
