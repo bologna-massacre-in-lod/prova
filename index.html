@@ -137,10 +137,10 @@
 		        right: 2px;
 			}
 
-			.article {
+			/*.article {
 				padding-left: 30px;
 				padding-right: 32px;
-			}
+			}*/
                 
 		</style>
 		
@@ -162,6 +162,22 @@
 	<body>
 		<div id="grid-container">
 			<div id="top">
+				<div class="topnav">
+			        <a class="active" href="index.html">Home</a>
+			        <a href="disclaimer.html">Disclaimer</a>
+			        <a href="documentation.html">Documentation</a>
+			        <a href="about.html">About</a>
+			        <a class="icon" onclick="myFunction()"></a> <!--cosa è? -->
+					<script src="main.js"></script>
+		    	</div>
+
+			</div> <!-- si chiude il div top in cui c'è il selector e la navbar generica -->			
+
+			<div id="content">
+				<!-- bottone per articolo precedente -->
+				<!-- <button id="prev" onclick="prevArticle()"/>&lt;</button>
+				<button id="next" onclick="nextArticle()"/>&gt;</button>
+				<script src="PROVA_js.js"></script> -->
 				<ul id="selectorNav" style="position: relative;">
 					<li style="float:left; margin-left: -2em;"><p>&lt;</p><p>previous</p></li>
 					<div style="position: absolute; left: 50%;">
@@ -194,20 +210,11 @@
 					  	</li>
 					</div>
 				  	<li><a class="buttonIssue" id="Origin">Origin</a></li>
-				  	<li style="float:right;"><p>&lt;</p><p>previous</p></li>
+				  	<li style="float:right;"><p>&gt;</p><p>next</p></li>
 
 				</ul>
 
 				<script src="PROVA_js.js"></script>	
-
-			</div> <!-- si chiude il div top in cui c'è il selector e la navbar generica -->			
-
-			<div id="content">
-				<!-- bottone per articolo precedente -->
-				<!-- <button id="prev" onclick="prevArticle()"/>&lt;</button>
-				<button id="next" onclick="nextArticle()"/>&gt;</button>
-				<script src="PROVA_js.js"></script> -->
-
 				<!-- issue 1 -->
 
 				<div id="issue1">
