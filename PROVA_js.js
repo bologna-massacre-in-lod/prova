@@ -314,7 +314,7 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 				var spanParent = span.parentNode;
 				if (span.parentNode.tagName === ("Q" || "I" || "SPAN" || "A" || "EM" || "STRONG" || "B" || "CITE")) {
 					//var inlineParent = span.parentNode;
-					var spanParent = spanParent.parentNode;
+					spanParent = spanParent.parentNode;
 				}
 				var curCategory = span.className;  	//person
 				var categoryFound = false;				
