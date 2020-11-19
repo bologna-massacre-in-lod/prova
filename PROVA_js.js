@@ -311,8 +311,8 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 
 			//first check: is the category already exist
 			for (var span of spans) {
-				if span.parentNode.tagName === ("Q" || "I"
-				var spanParent = 
+				/* if span.parentNode.tagName === ("Q" || "I"
+				var spanParent = */
 				var curCategory = span.className;  	//person
 				var categoryFound = false;				
 				var instanceFound = false;
