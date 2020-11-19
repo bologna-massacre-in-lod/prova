@@ -350,7 +350,7 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 					var newUl = matchedUl;
 				}
 				
-				createOccurrenceLi(span, span.innerHTML, newUl, n, myFrames, myList);				
+				createOccurrenceLi(span, spanParent, span.innerHTML, newUl, n, myFrames, myList);				
 			}
 
 
@@ -359,6 +359,11 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 			var times = Array.prototype.slice.call(elmnt.getElementsByTagName("time"));
 
 			for (var t=0; t<times.length; t++){
+				if (times[t].parentNode.tagName === ("Q" || "I" || "SPAN" || "A" || "EM" || "STRONG" || "B" || "CITE")) {
+					var inlineParent = times[t].parentNode;
+					var timeParent = inlineParent.parentNode;
+				}
+				var timeParent = times[t].parentNode;
 				var myInstanceFound = false;
 				if (t===0 && n===1) {
 					createCategoryLi("TIME", myList); //decidere come chiamarlo
@@ -381,7 +386,7 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 					var newUl = matchedTimeUl;
 				}
 
-				createOccurrenceLi(times[t], times[t].dateTime, newUl, n, myFrames, myList);
+				createOccurrenceLi(times[t], timeParent, times[t].dateTime, newUl, n, myFrames, myList);
 			}
 
 		}
@@ -424,15 +429,15 @@ function createInstanceUl(instance, parentLi, myList) { //ragionare sul primo li
 }
 
 
-function createOccurrenceLi(occurrence, occurrenceValue, newUl, n, myFrames, myList) {	//occurrenceValue è instance nella funzione precedente
+function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl, n, myFrames, myList) {	//occurrenceValue è instance nella funzione precedente
 	var occurrenceLi = document.createElement('li');
 
 	//recuperare il parent per scriverlo in instanceNode come punto di riferimento per l'user
-	var parentTag = occurrence.parentNode.id.match(/([^-]+)/)[1];
+	var parentTag = occurrenceParent.id.match(/([^-]+)/)[1];
 	if (parentTag === "P") {parentTag = "paragraph"}
 	else if (parentTag.startsWith("H")) {parentTag = "title"}
 	else if (parentTag === "FIGCAPTION") {parentTag = "figure caption"}
-	var parentNum = occurrence.parentNode.id.match(/-([^-]+)-/)[1];  
+	var parentNum = occurrenceParent.id.match(/-([^-]+)-/)[1];  
 	var parentTagAndNum = (parentTag+" "+parentNum).toLowerCase();
 
 	var instanceNode = document.createTextNode("article "+n+", "+parentTagAndNum+": "); //aggiungere stringa del titolo dell'articolo?
