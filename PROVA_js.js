@@ -311,6 +311,8 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 
 			//first check: is the category already exist
 			for (var span of spans) {
+				if span.parentNode.tagName === ("Q" || "I"
+				var spanParent = 
 				var curCategory = span.className;  	//person
 				var categoryFound = false;				
 				var instanceFound = false;
@@ -338,7 +340,7 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 			
 
 				if (instanceFound === false) {
-					createInstanceUl(span.innerHTML, matchedLi, myList);
+					createInstanceUl(span.innerText, matchedLi, myList);
 					var newUl = myList.getElementsByClassName(span.innerHTML)[0];
 				}
 				else {
