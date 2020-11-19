@@ -343,7 +343,7 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 
 				if (instanceFound === false) {
 					createInstanceUl(span.innerText, matchedLi, myList);
-					var newUl = myList.getElementsByClassName(span.innerHTML)[0];
+					var newUl = myList.getElementsByClassName(span.innerText)[0];
 				}
 				else {
 					var newUl = matchedUl;
