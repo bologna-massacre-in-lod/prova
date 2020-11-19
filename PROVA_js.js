@@ -311,11 +311,11 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 
 			//first check: is the category already exist
 			for (var span of spans) {
+				var spanParent = span.parentNode;
 				if (span.parentNode.tagName === ("Q" || "I" || "SPAN" || "A" || "EM" || "STRONG" || "B" || "CITE")) {
 					var inlineParent = span.parentNode;
 					var spanParent = inlineParent.parentNode;
 				}
-				var spanParent = span.parentNode;
 				var curCategory = span.className;  	//person
 				var categoryFound = false;				
 				var instanceFound = false;
@@ -359,11 +359,11 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 			var times = Array.prototype.slice.call(elmnt.getElementsByTagName("time"));
 
 			for (var t=0; t<times.length; t++){
+				var timeParent = times[t].parentNode;
 				if (times[t].parentNode.tagName === ("Q" || "I" || "SPAN" || "A" || "EM" || "STRONG" || "B" || "CITE")) {
 					var inlineParent = times[t].parentNode;
 					var timeParent = inlineParent.parentNode;
 				}
-				var timeParent = times[t].parentNode;
 				var myInstanceFound = false;
 				if (t===0 && n===1) {
 					createCategoryLi("TIME", myList); //decidere come chiamarlo
