@@ -313,8 +313,8 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 			for (var span of spans) {
 				var spanParent = span.parentNode;
 				if (span.parentNode.tagName === ("Q" || "I" || "SPAN" || "A" || "EM" || "STRONG" || "B" || "CITE")) {
-					var inlineParent = span.parentNode;
-					var spanParent = inlineParent.parentNode;
+					//var inlineParent = span.parentNode;
+					var spanParent = spanParent.parentNode;
 				}
 				var curCategory = span.className;  	//person
 				var categoryFound = false;				
