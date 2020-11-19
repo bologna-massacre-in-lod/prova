@@ -311,11 +311,11 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 
 			//first check: is the category already exist
 			for (var span of spans) {
-				/*if (span.parentNode.tagName === ("Q" || "I" || "SPAN" || "A" || "EM" || "STRONG" || "B" || "CITE")) {
+				if (span.parentNode.tagName === ("Q" || "I" || "SPAN" || "A" || "EM" || "STRONG" || "B" || "CITE")) {
 					var inlineParent = span.parentNode;
 					var spanParent = inlineParent.parentNode;
 				}
-				var spanParent = span.parentNode;*/
+				var spanParent = span.parentNode;
 				var curCategory = span.className;  	//person
 				var categoryFound = false;				
 				var instanceFound = false;
