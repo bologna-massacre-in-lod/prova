@@ -503,7 +503,7 @@ function showLiChildren(myListId, instanceId){
 			child.style.display = 'block';
 			var f = child.children;
 			for (var g of f){
-				g.style.display = 'none';
+				g.style.display = 'none'; //tranne il primo figlio di ul, cioè il link a wikipedia (.style.display = "inline-block";)
 			}
 		}
 	}
@@ -520,7 +520,7 @@ function showUlChildren(myListId, instanceId, event){
 	}
 	else{
 		for (var child of e){
-			child.style.display = 'block';
+			child.style.display = 'block'; // tranne il primo child, che vogliamo .stlye.display = "inline-block";
 		}
 	}
 	event.stopPropagation();
