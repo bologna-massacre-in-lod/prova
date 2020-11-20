@@ -310,12 +310,12 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 			var spans = Array.prototype.slice.call(elmnt.getElementsByTagName("span"));
 
 			//first check: is the category already exist
-			for (var span of spans) {
-				var spanParent = span.parentNode;
+			for (var span of spans) {				
 				if (span.parentNode.tagName === ("Q" || "I" || "SPAN" || "A" || "EM" || "STRONG" || "B" || "CITE")) {
-					//var inlineParent = span.parentNode;
-					spanParent = spanParent.parentNode;
+					var inlineParent = span.parentNode;
+					var spanParent = spanParent.parentNode;
 				}
+				else {var spanParent = span.parentNode;}
 				var curCategory = span.className;  	//person
 				var categoryFound = false;				
 				var instanceFound = false;
