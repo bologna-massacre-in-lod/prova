@@ -311,7 +311,7 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 
 			//first check: is the category already exist
 			for (var span of spans) {				
-				if (span.parentNode.tagName === ("I" || "A") {
+				if (span.parentNode.tagName === ("I" || "A")) {
 					var inlineParent = span.parentNode;
 					var spanParent = inlineParent.parentNode;
 				}
