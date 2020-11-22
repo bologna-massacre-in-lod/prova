@@ -350,7 +350,7 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 					var newUl = matchedUl;
 				}
 				
-				createOccurrenceLi(span, spanParent, span.innerHTML, newUl, n, myFrames, myList);				
+				createOccurrenceLi(span, spanParent, span.innerText, newUl, n, myFrames, myList);				
 			}
 
 
@@ -433,7 +433,7 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 	var occurrenceLi = document.createElement('li');
 
 	//recuperare il parent per scriverlo in instanceNode come punto di riferimento per l'user
-	var parentTag = occurrenceParent.id.match(/([^-]+)/)[1];
+	var parentTag = occurrenceParent.id.match(/([^-]+)/)[1]; //h1-1-2
 	if (parentTag === "P") {parentTag = "paragraph"}
 	else if (parentTag.startsWith("H")) {parentTag = "title"}
 	else if (parentTag === "FIGCAPTION") {parentTag = "figure caption"}
