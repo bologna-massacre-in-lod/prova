@@ -622,6 +622,17 @@ function sortOccurrences(){
 	}
 }
 
+
+function sortByFreq() {
+	var elements = document.getElementById("metadata").children;
+	for (var i = 1; i < elements.lenght; i++) {
+		var curListCategories = document.getElementById('listIssue'+i).children;
+		var curListCategoriesUl = curListCategories.children;
+	}
+	var freq = ul.children;
+}
+
+
 function sortByAppearance(){
 	
 }
