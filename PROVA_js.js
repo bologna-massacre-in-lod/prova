@@ -309,7 +309,7 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 			// get span tag 
 			var spans = Array.prototype.slice.call(elmnt.getElementsByTagName("span"));
 
-			//first check: is the category already exist
+			//first check: if the category already exist
 			for (var span of spans) {				
 				if (span.parentNode.tagName === ("I" || "A" || "Q" || "SPAN" || "EM" || "STRONG" || "B" || "CITE")) {
 					var inlineParent = span.parentNode;
@@ -413,19 +413,24 @@ function createInstanceUl(instance, parentLi, myList) { //ragionare sul primo li
 	newUl.style.display = 'none';
 	var ulNode = document.createTextNode(instance);
 	newUl.appendChild(ulNode);
-	// var wikiLi = document.createElement('li'); //in commento //creiamo un elemento li che è il bottone cliccabile per arriavre alla pagina Wikipedia di instance 
-	// wikiLi.style.display = "inline-block"; //in commento
+	var wikiLi = document.createElement('li'); //creiamo un elemento li che è il bottone cliccabile per arriavre alla pagina Wikipedia di instance 
 	var link = document.createElement('a'); //creiamo un elemento 'a'
 	var normalizedInstance = instance.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); //NFD Unicode Normal Form: scompone i grafemi in una combinazione di grafemi semplici per esempio e piu accento. la Regex invece è un range per eliminare gli accenti, quindi da u ad f.
 	var hrefValue = 'http://en.wikipedia.org/wiki/'+normalizedInstance;  //costruiamo il link    
-	link.setAttribute('href', hrefValue); //aggiungiamo a "link", figlio di "wikiLi", l'url costruito
-	link.setAttribute('target', '_blank');
-	//link.setAttribute('class', 'wikiLink'); //classe per poter richiamare la funzione da jquery
+	// link.setAttribute('href', hrefValue); //aggiungiamo a "link", figlio di "wikiLi", l'url costruito
+	// link.setAttribute('target', '_blank');
+	// link.setAttribute('class', 'wikiLink'); //classe per poter richiamare la funzione da jquery
+	link.setAttribute('onClick', 'wikiLink("'+hrefValue+'", event)');
 	var wikiText = document.createTextNode("wikipedia");
 	link.appendChild(wikiText);
-	//wikiLi.appendChild(link); //in commento
-	newUl.appendChild(link); //link al posto di wikili
+	wikiLi.appendChild(link);
+	newUl.appendChild(wikiLi);
 	parentLi.appendChild(newUl);	
+}
+
+function wikiLink(newUrl, event) { 
+	window.open(newUrl, "_blank"); 
+	event.stopPropagation();
 }
 
 
@@ -439,7 +444,6 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 	else if (parentTag === "FIGCAPTION") {parentTag = "figure caption"}
 	var parentNum = occurrenceParent.id.match(/-([^-]+)-/)[1];  
 	var parentTagAndNum = (parentTag+" "+parentNum).toLowerCase();
-
 	var instanceNode = document.createTextNode("article "+n+", "+parentTagAndNum+": "); //aggiungere stringa del titolo dell'articolo?
 	
 	//3. display none
@@ -447,19 +451,18 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 
 	occurrenceLi.appendChild(instanceNode);
 
-	/*
 	//numero di li il cui span o elemento time corrispondente ha lo stesso parent di quello corrente
 	var pos = 0;
 	for (var ulchild of newUl.children){
-		if occurrence.parent.id === ulchild.data-parent{ // controllare risultato di === False
+		if (occurrenceParent.id === ulchild.getAttribute('data-parent')) { // controllare risultato di === False
 			pos++;
 		}
 	}
-	occurrenceLi.setAttribute('data-parent', occurrence.parent.id);
-	*/
+	occurrenceLi.setAttribute('data-parent', occurrenceParent.id);
+	
 
-	//var citNode = document.createTextNode('" '+ parsing(occurrenceValue, occurrence.parentNode)+'"'); //vedi se fare textNode o innerHTML
-	//occurrenceLi.appendChild(citNode);
+	var citNode = document.createTextNode('" '+ parsing(occurrence.innerText, occurrenceParent, pos)+'"'); //vedi se fare textNode o innerHTML
+	occurrenceLi.appendChild(citNode);
 
 	var occurrenceId = occurrenceValue+"-"+(newUl.children.length+1);
 	occurrence.setAttribute('id', occurrenceId);
@@ -527,40 +530,18 @@ function showUlChildren(myListId, instanceId, event){
 }
 
 
-/*
-function parsing(span, parent, numIstanza){
-	var container = parent.replace(/<[^>]*>/gi, ' ') !!or gi:To perform a global, case-insensitive search
-	.replace(/\s{2,}/gi, ' ')
-	.trim();
-	
-	// se riusciamo a trovare un modo di far funzionare la riga 401, allora dalla 385 alla 400 sono inutili
-	if (numIstanza != 0) {
-		// vedere come gestire le posizioni 0
-		var occorrenzeArray = [];
-		var pos = container.indexOf(span);
-		occorrenzeArray.push(pos);
-		// calcolo del numero di occorrenze
-		c = 1;
-		while (c < numero di occorrenze) {
-			pos = container.indexOf(span, pos+1);
-			occorrenzeArray.push(pos);
-			c++;
-		}
-		//da rivedere
-		var posIstanzaCorrente = occorrenzeArray[numIstanza];
+function parsing(instance, parent, numIstanza){
+	var container = parent.innerText;
+	if (instance.includes("(") && instance.includes(")")){ //modificate le parentesi con le corrispettive espressioni in regexp
+		var cleanInstance = instance.replace(/\(/g, "\\S*\(").replace(/\)/g, "\\S*\)");
+	} 
+	else{
+		var cleanInstance = instance;
 	}
-
-	//versione con stringa di regexp che non va
-	var regExp = eval("/(\\S+\\s){0,5}\\S*" + span + "\\*(\\S+\\s+) {0,5}/g");
-	var snippetArray = container.match(regExp);
-	return snippetArray[numIstanza];
-
-	//versione che funziona
-	var e = new RegExp('(\\S+\\s){0,5}\\S*' + span + '(\\s+\\S+){0,5}', 'ig');
+	var e = new RegExp('(\\S+\\s){0,5}\\S*' + cleanInstance + '(\\,?\\s+\\S+){0,5}', 'ig');
   	var res = container.match(e);
   	return res[numIstanza];
 }
-*/
 
 
 
