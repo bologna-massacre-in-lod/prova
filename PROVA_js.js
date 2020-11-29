@@ -615,29 +615,56 @@ function highlight(spanId, iFrameN, event) {
 function sortOccurrences(){
 	var elements = document.getElementById("metadata").children;
 	for (var i = 1; i <= 2; i++){   //nella versine finale ci sarà 3 perchè abbiamo 3 listissues
-		sortCategory(document.getElementById("listIssue" + i));
+		sortCategory(document.getElementById("listIssue" + i), 'class');
 		for (var n = 0; n < document.getElementById("listIssue" + i).children.length; n++){
-			sortCategory(document.getElementById("listIssue" + i).getElementsByClassName(document.getElementById("listIssue" + i).children[n].className)[0]);
+			sortCategory(document.getElementById("listIssue" + i).getElementsByClassName(document.getElementById("listIssue" + i).children[n].className)[0], 'class');
 		}
 	}
 }
 
+function sortByAppearance(){
+	var elements = document.getElementById("metadata").children;
+	for (var i = 1; i <= 2; i++){   //nella versine finale ci sarà 3 perchè abbiamo 3 listissues
+		sortCategory(document.getElementById("listIssue" + i), 'data-position');
+		for (var n = 0; n < document.getElementById("listIssue" + i).children.length; n++){
+			sortCategory(document.getElementById("listIssue" + i).getElementsByClassName(document.getElementById("listIssue" + i).children[n].className)[0], 'data-position');
+		}
+	}
+}
 
 function sortByFreq() {
 	var elements = document.getElementById("metadata").children;
-	for (var i = 1; i < elements.lenght; i++) {
-		var curListCategories = document.getElementById('listIssue'+i).children;
+	//parte 1: assegnare l'attributo data-frequency a ogni li e ogni ul
+	for (var i = 0; i < elements.length; i++) { //entriamo in ognuna delle liste
+		var curListCategories = document.getElementById('listIssue'+i).children; //<li> di ogni lista
+		for (var g = 0; g < curListCategories.length; g++) {
+			var curListCategoriesUl = curListCategories[g].children; //ul di ogni li
+			curListCategories[g].setAttribute('data-frequency', curListCategoriesUl.length); //creiamo attributo data-frequency per ogni li, che ha come valore la lunghezza della lista dei suoi figli
+			for (k = 0; k < curListCategoriesUl.length; k++) { //entriamo in ogni ul
+				curListCategoriesUl[k].setAttribute('data-frequency', curListCategoriesUl[k].children.length); //assegnamo l'attributo data-frequency anche a ogni ul, il cui valore è il totale del figli di quell'ul
+			}
+		}
+
+		//parte 2: ordinare secondo il valore dell'attributo
+		sortCategory(document.getElementById("listIssue" + i), 'data-frequency');
+		for (var n = 0; n < document.getElementById("listIssue" + i).children.length; n++){
+			sortCategory(document.getElementById("listIssue" + i).getElementsByClassName(document.getElementById("listIssue" + i).children[n].className)[0], 'data-frequency');
+		}
+	}
+
+}
+
+
+		
 		var curListCategoriesUl = curListCategories.children;
+		for (var g = 0; g < curListCategoriesUl.length; g++) {
+			curListCategoriesUl[g].length
+		}
 	}
 	var freq = ul.children;
 }
 
-
-function sortByAppearance(){
-	
-}
-
-function sortCategory(list) {
+function sortCategory(list, searchKey) {
   var i, switching, b, shouldSwitch;
   switching = true;
   while (switching) {
@@ -645,7 +672,9 @@ function sortCategory(list) {
   	b = list.children;
   	for (i = 0; i < (b.length - 1); i++) {
       		shouldSwitch = false;
-      		if (b[i].getAttribute("class").toLowerCase() > b[i + 1].getAttribute("class").toLowerCase()) {
+		if (!isNaN(b[i].getAttribute(searchKey))){var myStr = parseInt(b[i].getAttribute(searchKey))>parseInt(b[i+1].getAttribute(searchKey));}
+		else{var myStr = b[i].getAttribute(searchKey).toLowerCase() >b[i+1].getAttribute(searchKey).toLowerCase();}
+      		if (myStr) {
         		shouldSwitch = true;
         		break;
       		}
@@ -656,6 +685,8 @@ function sortCategory(list) {
 	}
   }
 }
+
+
 
 /*
 function removeHighligth(iFrameN){
