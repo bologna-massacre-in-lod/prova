@@ -1,5 +1,4 @@
 
-
 function changeCSS(cssFile, cssLinkIndex) {
 	/* create new link */
 
@@ -310,7 +309,8 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 			var spans = Array.prototype.slice.call(elmnt.getElementsByTagName("span"));
 
 			//first check: if the category already exist
-			for (var span of spans) {				
+			for (var span of spans) {
+				// creating the variable for the parent
 				if (span.parentNode.tagName === ("I" || "A" || "Q" || "SPAN" || "EM" || "STRONG" || "B" || "CITE")) {
 					var inlineParent = span.parentNode;
 					var spanParent = inlineParent.parentNode;
@@ -343,14 +343,15 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 			
 
 				if (instanceFound === false) {
-					createInstanceUl(span.innerText, matchedLi, myList);
-					var newUl = myList.getElementsByClassName(span.innerText)[0];
+					createInstanceUl(span.innerHTML, matchedLi, myList);
+					var newUl = myList.getElementsByClassName(span.innerHTML)[0];
 				}
 				else {
 					var newUl = matchedUl;
 				}
 				
-				createOccurrenceLi(span, spanParent, span.innerText, newUl, n, myFrames, myList);				
+				createOccurrenceLi(span, spanParent, span.innerHTML, newUl, n, myFrames, myList);	
+				
 			}
 
 
@@ -359,6 +360,7 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 			var times = Array.prototype.slice.call(elmnt.getElementsByTagName("time"));
 
 			for (var t=0; t<times.length; t++){
+				// creating variable for parent
 				if (times[t].parentNode.tagName === ("Q" || "I" || "SPAN" || "A" || "EM" || "STRONG" || "B" || "CITE")) {
 					var inlineParent = times[t].parentNode;
 					var timeParent = inlineParent.parentNode;
@@ -413,14 +415,14 @@ function createInstanceUl(instance, parentLi, myList) { //ragionare sul primo li
 	newUl.style.display = 'none';
 	var ulNode = document.createTextNode(instance);
 	newUl.appendChild(ulNode);
-	var wikiLi = document.createElement('li'); //creiamo un elemento li che è il bottone cliccabile per arriavre alla pagina Wikipedia di instance 
+	var wikiLi = document.createElement('li'); //creiamo un elemento li che è il bottone cliccabile per arriavre alla pagina Wikipedia di instance
+	wikiLi.setAttribute('id', 'wikiButton');
 	var link = document.createElement('a'); //creiamo un elemento 'a'
 	var normalizedInstance = instance.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); //NFD Unicode Normal Form: scompone i grafemi in una combinazione di grafemi semplici per esempio e piu accento. la Regex invece è un range per eliminare gli accenti, quindi da u ad f.
 	var hrefValue = 'http://en.wikipedia.org/wiki/'+normalizedInstance;  //costruiamo il link    
-	// link.setAttribute('href', hrefValue); //aggiungiamo a "link", figlio di "wikiLi", l'url costruito
-	// link.setAttribute('target', '_blank');
-	// link.setAttribute('class', 'wikiLink'); //classe per poter richiamare la funzione da jquery
-	link.setAttribute('onClick', 'wikiLink("'+hrefValue+'", event)');
+	//link.setAttribute('href', hrefValue); //aggiungiamo a "link", figlio di "wikiLi", l'url costruito //da reintegrare se le altre due opzioni non vanno
+	//link.setAttribute('target', '_blank'); //da reintegrare se le altre due opzioni non vanno
+	link.setAttribute('onClick', 'wikiLink("'+hrefValue+'", event)'); //alternativa alla funzione inline, eventListener
 	var wikiText = document.createTextNode("wikipedia");
 	link.appendChild(wikiText);
 	wikiLi.appendChild(link);
@@ -431,14 +433,13 @@ function createInstanceUl(instance, parentLi, myList) { //ragionare sul primo li
 function wikiLink(newUrl, event) { 
 	window.open(newUrl, "_blank"); 
 	event.stopPropagation();
-}
-
+} 
 
 function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl, n, myFrames, myList) {	//occurrenceValue è instance nella funzione precedente
 	var occurrenceLi = document.createElement('li');
 
 	//recuperare il parent per scriverlo in instanceNode come punto di riferimento per l'user
-	var parentTag = occurrenceParent.id.match(/([^-]+)/)[1]; //h1-1-2
+	var parentTag = occurrenceParent.id.match(/([^-]+)/)[1];
 	if (parentTag === "P") {parentTag = "paragraph"}
 	else if (parentTag.startsWith("H")) {parentTag = "title"}
 	else if (parentTag === "FIGCAPTION") {parentTag = "figure caption"}
@@ -451,18 +452,18 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 
 	occurrenceLi.appendChild(instanceNode);
 
+	
 	//numero di li il cui span o elemento time corrispondente ha lo stesso parent di quello corrente
 	var pos = 0;
 	for (var ulchild of newUl.children){
-		if (occurrenceParent.id === ulchild.getAttribute('data-parent')) { // controllare risultato di === False
+		if (occurrenceParent.id === ulchild.getAttribute('data-parent')){
 			pos++;
 		}
 	}
 	occurrenceLi.setAttribute('data-parent', occurrenceParent.id);
-	
 
 	var citNode = document.createTextNode('" '+ parsing(occurrence.innerText, occurrenceParent, pos)+'"'); //vedi se fare textNode o innerHTML
-	occurrenceLi.appendChild(citNode);
+	occurrenceLi.appendChild(citNode); //appena tolto dal commento
 
 	var occurrenceId = occurrenceValue+"-"+(newUl.children.length+1);
 	occurrence.setAttribute('id', occurrenceId);
@@ -472,14 +473,14 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 	newUl.appendChild(occurrenceLi);
 
 	//from text keywords to metadata viewer
-	occurrence.setAttribute('onclick', "goToMetadata('"+myList+"', '"+occurrenceValue+"')");
+	occurrence.setAttribute('onclick', "goToMetadata('"+myList.id+"', '"+occurrenceValue+"')");
 }
 					
 
 
 //from text keywords to metadata viewer
-function goToMetadata(curList, instanceId){
-	var e = window.parent.document.getElementById(curList.id).getElemmentsByClassName(instanceId)[0];
+function goToMetadata(curListId, instanceId){
+	var e = window.parent.document.getElementById(curListId).getElementsByClassName(instanceId)[0];
 	e.style.display = 'block';
 	var f = e.children;
 	for (var g of f){
@@ -492,22 +493,28 @@ function goToMetadata(curList, instanceId){
 //4. da rimettere in commento
 function showLiChildren(myListId, instanceId){
 	var e = document.getElementById(myListId).getElementsByClassName(instanceId)[0].children;
-	if(e[0].style.display == 'block'){
-		for (var child of e){
+	if(e[0].style.display == 'block') {
+		for (var child of e) {
 			child.style.display = 'none';
 			var f = child.children;
-			for (var g of f){
-				g.style.display = 'none';
-			}
+			for (var g of f) { g.style.display = 'none'; }
 		}
 	}
 	else{
-		for (var child of e){
+		for (var child of e) {
 			child.style.display = 'block';
 			var f = child.children;
+			/*
 			for (var g of f){
-				g.style.display = 'none'; //tranne il primo figlio di ul, cioè il link a wikipedia (.style.display = "inline-block";)
+				g.style.display = 'none'; 
 			}
+			*/
+			// non mostrare i figli <li> degli <ul> tranne il primo figlio di ogni <ul>, cioè il link a wikipedia
+			for (var g = 0; g < f.length; g++) {
+				if (g === 0) {f[g].style.display = "inline-block";}
+				else {f[g].style.display = 'none';}
+			}
+
 		}
 	}
 }
@@ -523,11 +530,17 @@ function showUlChildren(myListId, instanceId, event){
 	}
 	else{
 		for (var child of e){
-			child.style.display = 'block'; // tranne il primo child, che vogliamo .stlye.display = "inline-block";
+			child.style.display = 'block';
+		}		
+		/*for (var b = 0; b < e.length; b++) {
+			if (b === 0) {e[b].style.display = "inline-block";}
+			else {e[b].style.display = 'none';}
 		}
+		*/
 	}
 	event.stopPropagation();
 }
+
 
 
 function parsing(instance, parent, numIstanza){
@@ -542,6 +555,7 @@ function parsing(instance, parent, numIstanza){
   	var res = container.match(e);
   	return res[numIstanza];
 }
+
 
 
 
@@ -597,6 +611,41 @@ function highlight(spanId, iFrameN, event) {
 	
      event.stopPropagation();
 }
+
+function sortOccurrences(){
+	var elements = document.getElementById("metadata").children;
+	for (var i = 1; i <= 2; i++){   //nella versine finale ci sarà 3 perchè abbiamo 3 listissues
+		sortCategory(document.getElementById("listIssue" + i));
+		for (var n = 0; n < document.getElementById("listIssue" + i).children.length; n++){
+			sortCategory(document.getElementById("listIssue" + i).getElementsByClassName(document.getElementById("listIssue" + i).children[n].className)[0]);
+		}
+	}
+}
+
+function sortByAppearance(){
+	
+}
+
+function sortCategory(list) {
+  var i, switching, b, shouldSwitch;
+  switching = true;
+  while (switching) {
+  	switching = false;
+  	b = list.children;
+  	for (i = 0; i < (b.length - 1); i++) {
+      		shouldSwitch = false;
+      		if (b[i].getAttribute("class").toLowerCase() > b[i + 1].getAttribute("class").toLowerCase()) {
+        		shouldSwitch = true;
+        		break;
+      		}
+    	}
+    	if (shouldSwitch) {
+		b[i].parentNode.insertBefore(b[i + 1], b[i]); 
+		switching = true;
+	}
+  }
+}
+
 /*
 function removeHighligth(iFrameN){
 	var isOnView = document.getElementById(iFrameN).contentWindow.document.getElementsByName("onView");
@@ -616,4 +665,32 @@ if (curCategory.includes(" ")) { //se c'è uno spazio in teoria vuol dire che c'
 }
 
 
+*/
+
+// body della funzione parsing!!
+//var container = parent.innerHTML.replace(/<[^>]*>/gi, ' ') //or gi:To perform a global, case-insensitive search
+	//.replace(/\s{2,}/gi, ' ')
+	//.trim();
+/*	
+	// se riusciamo a trovare un modo di far funzionare la riga 401, allora dalla 385 alla 400 sono inutili
+	if (numIstanza != 0) {
+		// vedere come gestire le posizioni 0
+		var occorrenzeArray = [];
+		var pos = container.indexOf(span);
+		occorrenzeArray.push(pos);
+		// calcolo del numero di occorrenze
+		c = 1;
+		while (c < numero di occorrenze) {
+			pos = container.indexOf(span, pos+1);
+			occorrenzeArray.push(pos);
+			c++;
+		}
+		//da rivedere
+		var posIstanzaCorrente = occorrenzeArray[numIstanza];
+	}
+
+	//versione con stringa di regexp che non va
+	var regExp = eval("/(\\S+\\s){0,5}\\S*" + span + "\\*(\\S+\\s+) {0,5}/g");
+	var snippetArray = container.match(regExp);
+	return snippetArray[numIstanza];
 */
