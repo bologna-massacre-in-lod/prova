@@ -636,7 +636,7 @@ function sortByAppearance(){
 function sortByFreq() {
 	var elements = document.getElementById("metadata").children;
 	//parte 1: assegnare l'attributo data-frequency a ogni li e ogni ul
-	for (var i = 0; i < elements.length; i++) { //entriamo in ognuna delle liste
+	for (var i = 1; i < elements.length; i++) { //entriamo in ognuna delle liste
 		var curListCategories = document.getElementById('listIssue'+i).children; //<li> di ogni lista
 		for (var g = 0; g < curListCategories.length; g++) {
 			var curListCategoriesUl = curListCategories[g].children; //ul di ogni li
