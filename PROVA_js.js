@@ -652,8 +652,8 @@ function sortByFreq() {
 		while (numCategories--) { document.getElementById("listIssue" + i).appendChild(document.getElementById("listIssue" + i).childNodes[numCategories]);}
 		for (var n = 0; n < document.getElementById("listIssue" + i).children.length; n++){
 			sortCategory(document.getElementById("listIssue" + i).getElementsByClassName(document.getElementById("listIssue" + i).children[n].className)[0], 'data-frequency');
-			/*var numIstances = document.getElementById("listIssue" + i).children[n].childNodes.length;
-			while (numIstances--) { document.getElementById("listIssue" + i).children[n].appendChild(document.getElementById("listIssue" + i).children[n].childNodes[numIstances]); }*/
+			var numIstances = document.getElementById("listIssue" + i).children[n].children.length;
+			while (numIstances--) { document.getElementById("listIssue" + i).children[n].appendChild(document.getElementById("listIssue" + i).children[n].children[numIstances]); }
 		}
 	}
 
