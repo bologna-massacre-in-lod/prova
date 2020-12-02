@@ -1,4 +1,7 @@
-window.addEventListener("load", myInit, true); function myInit(){ metadataViewer(); showMetadataList(); }
+function start() {
+	metadataViewer();
+	showMetadataList();
+}
 
 function myFunction() {
 	var x = document.getElementById("myTopnav");
@@ -213,7 +216,7 @@ function nextArticle() {
 	}
 }
 
-function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittura + separare 1. più classi in una 2. più tag innestati + funzioni block/hide sulle singole liste
+function metadataViewer() {  // ricordarsi di lowercase e altre cose di scrittura + separare 1. più classi in una 2. più tag innestati + funzioni block/hide sulle singole liste
 
 	// enter each issue 
 	var elements = document.getElementById('content').children;
