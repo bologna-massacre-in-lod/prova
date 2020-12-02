@@ -723,13 +723,43 @@ button#prev, button#next  {
 
 #issue1 > div, #issue2 > div, #issue3 > div, #listIssue1, #listIssue2, #listIssue3 { display: none; }
 
-#coverPage1:target, #coverPage2:target, #coverPage3:target, #article1:target, #article2:target, #article3:target, #article4:target, #article5:target, #article6:target, #article7:target, #article8:target, #article9:target, #article10:target, #article11:target, #article12:target, #article13:target, #article14:target, #article15:target { display: block; }
+{ display: block; }
 
-#coverPage1:target ~ #listIssue1, #article1:target ~ #listIssue1, #article2:target ~ #listIssue1, #article3:target ~ #listIssue1, #article5:target ~ #listIssue1 { display: block; }
+#coverPage1:target, #coverPage1:target ~ #listIssue1 { display: block; }
 
-#coverPage2:target ~ #listIssue2, #article6:target ~ #listIssue2, #article7:target ~ #listIssue2, #article8:target ~ #listIssue2, #article9:target ~ #listIssue2, #article10:target ~ #listIssue2  { display: block; }
+#coverPage2:target, #coverPage2:target ~ #listIssue2 { display: block; }
 
-#coverPage3:target ~ #listIssue3, #article11:target ~ #listIssue3, #article12:target ~ #listIssue3, #article13:target ~ #listIssue3, #article114:target ~ #listIssue3, #article15:target ~ #listIssue3  { display: block; }
+#coverPage3:target, #coverPage3:target ~ #listIssue3 { display: block; }
+
+#article1:target, #article1:target ~ #listIssue1 { display: block; }
+
+#article2:target, #article2:target ~ #listIssue1 { display: block; }
+
+#article3:target, #article3:target ~ #listIssue1 { display: block; }
+
+#article4:target, #article4:target ~ #listIssue1 { display: block; }
+
+#article5:target, #article5:target ~ #listIssue1 { display: block; }
+
+#article6:target, #article6:target ~ #listIssue2 { display: block; }
+
+#article7:target, #article7:target ~ #listIssue2 { display: block; }
+
+#article8:target, #article8:target ~ #listIssue2 { display: block; }
+
+#article9:target, #article9:target ~ #listIssue2 { display: block; }
+
+#article10:target, #article10:target ~ #listIssue2 { display: block; }
+
+#article11:target, #article11:target ~ #listIssue3 { display: block; }
+
+#article12:target, #article12:target ~ #listIssue3 { display: block; }
+
+#article13:target, #article13:target ~ #listIssue3 { display: block; }
+
+#article14:target, #article114:target ~ #listIssue3 { display: block; }
+
+#article15:target, #article15:target ~ #listIssue3 { display: block; }
 
 
 
