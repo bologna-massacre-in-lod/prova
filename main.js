@@ -276,7 +276,7 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 
 				else{
 					for (c=0; c<matchedLi.children.length; c++){
-						if (span.innerHTML.includes(matchedLi.children[c].className) || matchedLi.children[c].className.includes(span.innerHTML)) { // partial matching
+						if (span.innerText.includes(matchedLi.children[c].className) || matchedLi.children[c].className.includes(span.innerText)) { // partial matching
 							instanceFound = true;
 							var matchedUl = matchedLi.children[c];
 						}
@@ -284,14 +284,14 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 				}
 			
 				if (instanceFound === false) {
-					createInstanceUl(span.innerHTML, matchedLi, myList);
-					var newUl = myList.getElementsByClassName(span.innerHTML)[0];
+					createInstanceUl(span.innerText, matchedLi, myList);
+					var newUl = myList.getElementsByClassName(span.innerText)[0];
 				}
 				else {
 					var newUl = matchedUl;
 				}
 				
-				createOccurrenceLi(span, spanParent, span.innerHTML, newUl, n, myFrames, myList);	
+				createOccurrenceLi(span, spanParent, span.innerText, newUl, n, myFrames, myList);	
 				
 			}
 
