@@ -723,7 +723,7 @@ button#prev, button#next  {
 
 #issue1 > div, #issue2 > div, #issue3 > div, #listIssue1, #listIssue2, #listIssue3 { display: none; }
 
-{ display: block; }
+
 
 #coverPage1:target, #coverPage1:target ~ #listIssue1 { display: block; }
 
