@@ -615,8 +615,8 @@ function sortCategory(list, searchKey) {
 function showMetadataList() {
 	var currURL = new URL(window.location.href);
 	var targetElement = currURL.hash;
-	if ((targetElement === 'coverPage1') | parseInt((targetElement.substring(0, targetElement.length - 1)) < 6 )) {document.getElementById("listIssue1").style.display = 'block';}
-	else if ((targetElement === 'coverPage2') | 5 < parseInt((targetElement.substring(0, targetElement.length - 1)) < 11 )) {document.getElementById("listIssue2").style.display = 'block';}
+	if ( (targetElement === 'coverPage1') | (parseInt(targetElement.substring(0, targetElement.length - 1)) < 6 ) ) {document.getElementById("listIssue1").style.display = 'block';}
+	else if ((targetElement === 'coverPage2') | (5 < parseInt((targetElement.substring(0, targetElement.length - 1)) < 11 )) ) {document.getElementById("listIssue2").style.display = 'block';}
 	else {document.getElementById("listIssue3").style.display = 'block';}
 }
 
