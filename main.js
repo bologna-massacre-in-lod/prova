@@ -87,7 +87,7 @@ function changeIssue(issueN){
 		var myMeta = myFrame.contentWindow.document.head.getElementsByTagName("meta");
 			for (var l = 0; l < myMeta.length; l++) {
 				if (myMeta[l].name == "DC.title") {
-					newArticle.innerHTML = myMeta[l].content;
+					newArticle.innerText = myMeta[l].content;
 				}
 			}
 		document.getElementById("changeArguments").replaceChild(newArticle, oldArticles[i-1]);
@@ -251,7 +251,7 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 
 				else{
 					for (c=0; c<matchedLi.children.length; c++){
-						if (span.innerHTML.includes(matchedLi.children[c].className) || matchedLi.children[c].className.includes(span.innerHTML)) { // partial matching
+						if (span.innerText.includes(matchedLi.children[c].className) || matchedLi.children[c].className.includes(span.innerText)) { // partial matching
 							instanceFound = true;
 							var matchedUl = matchedLi.children[c];
 						}
@@ -259,14 +259,14 @@ function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittu
 				}
 			
 				if (instanceFound === false) {
-					createInstanceUl(span.innerHTML, matchedLi, myList);
-					var newUl = myList.getElementsByClassName(span.innerHTML)[0];
+					createInstanceUl(span.innerText, matchedLi, myList);
+					var newUl = myList.getElementsByClassName(span.innerText)[0];
 				}
 				else {
 					var newUl = matchedUl;
 				}
 				
-				createOccurrenceLi(span, spanParent, span.innerHTML, newUl, n, myFrames, myList);	
+				createOccurrenceLi(span, spanParent, span.innerText, newUl, n, myFrames, myList);	
 				
 			}
 
@@ -378,7 +378,7 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 	}
 	occurrenceLi.setAttribute('data-parent', occurrenceParent.id);
 
-	var citNode = document.createTextNode('" '+ parsing(occurrence.innerText, occurrenceParent, pos)+'"'); //vedi se fare textNode o innerHTML
+	var citNode = document.createTextNode('" '+ parsing(occurrence.innerText, occurrenceParent, pos)+'"'); //vedi se fare textNode o innerText
 	occurrenceLi.appendChild(citNode); //appena tolto dal commento
 
 	var occurrenceId = occurrenceValue+"-"+(newUl.children.length+1);
@@ -648,7 +648,7 @@ if (curCategory.includes(" ")) { //se c'è uno spazio in teoria vuol dire che c'
 */
 
 // body della funzione parsing!!
-//var container = parent.innerHTML.replace(/<[^>]*>/gi, ' ') //or gi:To perform a global, case-insensitive search
+//var container = parent.innerText.replace(/<[^>]*>/gi, ' ') //or gi:To perform a global, case-insensitive search
 	//.replace(/\s{2,}/gi, ' ')
 	//.trim();
 /*	
