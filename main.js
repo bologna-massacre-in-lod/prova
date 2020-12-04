@@ -1,9 +1,4 @@
-function start() {
-	metadataViewer();
-	showMetadataList();
-}
-
-function myFunction() {
+ function myFunction() {
 	var x = document.getElementById("myTopnav");
 	if (x.className === "topnav") {x.className += " responsive";} 
 	else {x.className = "topnav";}
@@ -62,20 +57,6 @@ function changeCSS(cssFile, cssLinkIndex) {
 
 
 function changeIssue(issueN){
-	/* if ('issue1' === issueN) {
-		var x = document.getElementById('issue1');
-		var y = document.getElementById('issue2');
-	} 
-	else {
-		var x = document.getElementById('issue2');
-		var y = document.getElementById('issue1');
-	} 
-	// issue y da non mostrare
-	y.style.display = "none";
-	for (var i=0; i<y.children.length; i++) {
-		y.children[i].style.display = "none";
-	}
-	*/
 	var y = [];
 	for (var h=1; h<=3; h++){
 		if ('issue'+h === issueN){x = document.getElementById('issue'+h);}
@@ -111,35 +92,15 @@ function changeIssue(issueN){
 			}
 		document.getElementById("changeArguments").replaceChild(newArticle, oldArticles[i-1]);
 	}	
-
-    /*	for (var n=1; n<totLength; n++) {
-		var newArticle = document.createElement("a");
-		newArticle.setAttribute("class", "buttonArticle");
-	    	newArticle.setAttribute("onclick", "changeArticle('article"  + n + "', '" + issueN + "')");
-		
-	    newArticle.innerHTML = 'article'+n;
-
-	    document.getElementById("changeArguments").replaceChild(newArticle, oldArticles[n-1]);
-    	}   */
-	
         var originButton = document.getElementById("Origin");
 	if (originButton.hasAttribute("href")) {
 		originButton.removeAttribute("href");
 	}
-	// mostrare solo la lista di metadati dell'issue in block
-	for (var m=1; m<document.getElementById('metadata').children.length; m++){
-		if (document.getElementById('metadata').children[m].id === "list"+issueN.charAt(0).toUpperCase()+issueN.slice(1)){
-			document.getElementById('metadata').children[m].style.display = "block";
-		}
-		else{
-			document.getElementById('metadata').children[m].style.display = "none";
-		}
-	}
+	showMetaList('changeIssue', issueN); 
 }
 
 function getLinkOrigin(currentArticle, myOrigin) {
 	/* TORNARE AL FILE SORGENTE   */
-
 	var myFrame = currentArticle.children[0];
 	var elmnt = myFrame.contentWindow.document.head;
 	var myMeta = elmnt.getElementsByTagName("meta");
@@ -158,9 +119,7 @@ function changeArticleCommon(c, articleNum, myOrigin){
 			c[i].style.display = "block";
 			getLinkOrigin(c[i], myOrigin);
 		}
-		else {
-			c[i].style.display = "none";
-		}
+		else {c[i].style.display = "none";}
 	}
 }
 
@@ -174,6 +133,16 @@ function changeArticleCover(articleNum, issueNum){
 	var c = window.parent.document.getElementById(issueNum).children;
 	var myOrigin = window.parent.document.getElementById("Origin");
 	changeArticleCommon(c, articleNum, myOrigin);
+	showMetaList('changeArticleCover', issueNum);
+}
+
+function showMetaList(string, issueN){
+	if (string === 'changeArticleCover'){var strToParse = window.parent.document.getElementById('metadata').children;}
+	else {var strToParse = document.getElementById('metadata').children;}
+	for (var m=1; m<strToParse.length; m++){
+		if (strToParse[m].id === "list"+issueN.charAt(0).toUpperCase()+issueN.slice(1)){strToParse[m].style.display = "block";}
+		else{strToParse[m].style.display = "none";}
+	}
 }
 
 function prevArticle() {
@@ -216,8 +185,9 @@ function nextArticle() {
 	}
 }
 
-function metadataViewer() {  // ricordarsi di lowercase e altre cose di scrittura + separare 1. più classi in una 2. più tag innestati + funzioni block/hide sulle singole liste
 
+function metadataViewer () {  // ricordarsi di lowercase e altre cose di scrittura + separare 1. più classi in una 2. più tag innestati + funzioni block/hide sulle singole liste
+//window.addEventListener("load", function(){
 	// enter each issue 
 	var elements = document.getElementById('content').children;
 	
@@ -281,7 +251,7 @@ function metadataViewer() {  // ricordarsi di lowercase e altre cose di scrittur
 
 				else{
 					for (c=0; c<matchedLi.children.length; c++){
-						if (span.innerText.includes(matchedLi.children[c].className) || matchedLi.children[c].className.includes(span.innerText)) { // partial matching
+						if (span.innerHTML.includes(matchedLi.children[c].className) || matchedLi.children[c].className.includes(span.innerHTML)) { // partial matching
 							instanceFound = true;
 							var matchedUl = matchedLi.children[c];
 						}
@@ -289,14 +259,14 @@ function metadataViewer() {  // ricordarsi di lowercase e altre cose di scrittur
 				}
 			
 				if (instanceFound === false) {
-					createInstanceUl(span.innerText, matchedLi, myList);
-					var newUl = myList.getElementsByClassName(span.innerText)[0];
+					createInstanceUl(span.innerHTML, matchedLi, myList);
+					var newUl = myList.getElementsByClassName(span.innerHTML)[0];
 				}
 				else {
 					var newUl = matchedUl;
 				}
 				
-				createOccurrenceLi(span, spanParent, span.innerText, newUl, n, myFrames, myList);	
+				createOccurrenceLi(span, spanParent, span.innerHTML, newUl, n, myFrames, myList);	
 				
 			}
 
@@ -339,8 +309,8 @@ function metadataViewer() {  // ricordarsi di lowercase e altre cose di scrittur
 
 		}
 	}
-
 }
+//});
 
 function createCategoryLi(category, myList) {
 	var newLi = document.createElement('li');
@@ -427,9 +397,50 @@ function goToMetadata(curListId, instanceId){
 	var e = window.parent.document.getElementById(curListId).getElementsByClassName(instanceId)[0];
 	e.style.display = 'block';
 	var f = e.children;
-	for (var g of f){
-		g.style.display = 'block';
+	f[0].style.display = 'inline-block;'
+	for (var g=1; g<f.length; g++){
+		f[g].style.display = 'block';
 	}
+	e.style.backgroundColor = "#FFDAB9";
+	e.scrollIntoView(true);
+
+	// animazione scomparsa colore background dopo 10 secondi:
+	var backgroundAnimation = window.parent.document.createElement('style'); // può andare in contrsto con la funzione che cambia lo stile dell'articolo?
+    backgroundAnimation.type = 'text/css';
+
+	var keyFramePrefixes = ["-webkit-", "-o-", "-moz-", ""];
+	var keyFrames = [];
+	var textNode = null;
+
+	for (var i in keyFramePrefixes) {
+		keyFrames = '@'+keyFramePrefixes[i]+'keyframes background-fade {'+
+		'80% { background-color: #FFDAB9; }'+
+		'100% { background-color: transparent; }'+
+		'}';
+		var rules = window.parent.document.createTextNode(keyFrames);
+	}
+
+	backgroundAnimation.appendChild(rules);
+
+	window.parent.document.getElementsByTagName("head")[0].appendChild(backgroundAnimation);
+
+	e.style.animation = 'background-fade 10s forwards';
+	e.style.WebkitAnimation = 'background-fade 10s forwards';
+    e.style.OAnimation = 'background-fade 10s forwards';
+    e.style.MozAnimation = 'background-fade 10s forwards';
+
+
+    setTimeout(function() {
+    	e.style.backgroundColor = 'transparent';
+    	e.style.WebkitAnimationName = '';
+    	e.style.animation = '';
+        e.style.OAnimation = '';
+        e.style.MozAnimation = '';
+        window.parent.document.getElementsByTagName("head")[0].removeChild(backgroundAnimation);
+    	}, 10000); // we have to reset the name of animation otherwise another call to background-fade wont have any effect
+	
+     event.stopPropagation();
+
 }
 //attribuisci effetto di hover da specificare nel css tipo con un background color 
 
@@ -610,16 +621,10 @@ function sortCategory(list, searchKey) {
   }
 }
 
-
-
-// function showMetadataList() {
-// 	var currURL = new URL(window.location.href);
-// 	var targetElement = currURL.hash;
-// 	if ( (targetElement === '#coverPage1') | (parseInt(targetElement.substring(0, targetElement.length - 1)) < 6 ) ) {document.getElementById("listIssue1").style.display = 'block';}
-// 	else if ((targetElement === '#coverPage2') | (5 < parseInt((targetElement.substring(0, targetElement.length - 1)) < 11 )) ) {document.getElementById("listIssue2").style.display = 'block';}
-// 	else {document.getElementById("listIssue3").style.display = 'block';}
-// }
-
+function showMetaContent(){
+	if (document.getElementById('contentToShow').style.display === 'none'){document.getElementById('contentToShow').style.display = 'block';}
+	else{document.getElementById('contentToShow').style.display = 'none';}
+}
 
 /*
 function removeHighligth(iFrameN){
