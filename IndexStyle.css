@@ -721,7 +721,7 @@ button#prev, button#next  {
 /* METTIAMO IN BLOCK TUTTI I DIV DEGLI ARTICOLI E DELLE COVER */
  
 
-#issue1 > div, #issue2 > div, #issue3 > div, #listIssue1, #listIssue2, #listIssue3 { display: none; }
+#issue1 > div, #issue2 > div, #issue3 > div { display: none; }
 
 
 
