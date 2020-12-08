@@ -180,13 +180,13 @@ function metadataViewer (issueN) {
 					}
 				}
 				if (instanceFound === false) {
-					createInstanceUl(span.innerText.toLowerCase(), matchedLi, myList);
-					var newUl = myList.getElementsByClassName(span.innerText.toLowerCase())[0];
+					createInstanceUl(span.innerText, matchedLi, myList);
+					var newUl = myList.getElementsByClassName(span.innerText)[0];
 				}
 				else {
 					var newUl = matchedUl;
 				}
-				createOccurrenceLi(span, spanParent, span.innerText.toLowerCase(), newUl, n, myFrames, myList);	
+				createOccurrenceLi(span, spanParent, span.innerText, newUl, n, myFrames, myList);	
 			}
 
 			// get time tag 
