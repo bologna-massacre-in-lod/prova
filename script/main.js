@@ -173,20 +173,20 @@ function metadataViewer (issueN) {
 				}
 				else{
 					for (c=0; c<matchedLi.children.length; c++){
-						if (span.innerText.includes(matchedLi.children[c].className) || matchedLi.children[c].className.includes(span.innerText)) { // partial matching
+						if (span.innerText.toLowerCase().includes(matchedLi.children[c].className) || matchedLi.children[c].className.includes(span.innerText.toLowerCase())) { // partial matching
 							instanceFound = true;
 							var matchedUl = matchedLi.children[c];
 						}
 					}
 				}
 				if (instanceFound === false) {
-					createInstanceUl(span.innerText, matchedLi, myList);
-					var newUl = myList.getElementsByClassName(span.innerText)[0];
+					createInstanceUl(span.innerText.toLowerCase(), matchedLi, myList);
+					var newUl = myList.getElementsByClassName(span.innerText.toLowerCase())[0];
 				}
 				else {
 					var newUl = matchedUl;
 				}
-				createOccurrenceLi(span, spanParent, span.innerText, newUl, n, myFrames, myList);	
+				createOccurrenceLi(span, spanParent, span.innerText.toLowerCase(), newUl, n, myFrames, myList);	
 			}
 
 			// get time tag 
@@ -281,7 +281,7 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 	}
 	occurrenceLi.setAttribute('data-parent', occurrenceParent.id);
 
-	var citNode = document.createTextNode('" '+ parsing(occurrence.innerText, occurrenceParent, pos)+'"'); //vedi se fare textNode o innerHTML
+	var citNode = document.createTextNode('"'+ parsing(occurrence.innerText, occurrenceParent, pos)+'"'); //vedi se fare textNode o innerHTML
 	occurrenceLi.appendChild(citNode); //appena tolto dal commento
 	var occurrenceId = occurrenceValue+"-"+(newUl.children.length+1);
 	occurrence.setAttribute('id', occurrenceId);
