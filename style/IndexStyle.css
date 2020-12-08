@@ -15,6 +15,7 @@ body {
     margin-right: 0px;
     margin-bottom: 0px;
     margin-left: 0px;
+  overflow-x:hidden;  /* aggiunto da Ari vediamo se è una cagata*/
  /* height:2.5rem; */
 }
 
@@ -22,8 +23,14 @@ body {
 img, p, h1, h2, h3, h4, h5, h6, hr, br {
   margin: 10px;
 }
+p.metadataText{
+	margin: 0px;
+	padding-top: 5px;
+}
 
-
+img{width: 93%;
+border-right: 32px; 
+}
 
 /* styling navbar */
 .topnav {
@@ -491,14 +498,16 @@ img, p, h1, h2, h3, h4, h5, h6, hr, br {
   text-align: justify;
   text-align: center;
   font-size: small;
-  padding: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background: rgba(38, 38, 38);
   color: white;
   margin-top: 0em;  /* or 0em;  */
   margin-bottom: 0em;
   margin-left: 0em;
   margin-right: 0em;  /* modifiche per tenere sotto il footer */
-  position: absolute; /*bottom: 0;*/
+  position: absolute; 
+  bottom: 0; /* togliendo bottom:0 viene su safari*/
   width: 100%;
   height: 2.5rem;
   /* per fissarlo sotto con FLEX --> BODY DISPLAY: FLEX;
@@ -562,7 +571,40 @@ Bottom right text
   /* position: sticky;
   width: 100%; */
 }
-      
+/* per rendere sticky la navbar del selector*/
+
+/* 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+*/
+
+
+/* per rendere sticky la navbar del selector con JS*/
+
+/*
+<script>
+window.onscroll = function() {myFunction()};
+
+var selectorNav = document.getElementById("selectorNav");
+var sticky = selectorNav.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    selectorNav.classList.add("sticky")
+  } else {
+    selectorNav.classList.remove("sticky");
+  }
+}
+</script>
+*/
+
 #selectorNav > li {
   display: inline-block;
 }
@@ -624,16 +666,19 @@ Bottom right text
 /* @media (min-width: 768px) */
 #content {
   position: relative;
-  padding-left: 15px; /* per farci stare il bottone prevArticle */
-  flex: 0 0 65%;
-  max-width: 65%;
+  height: 35.85em;
+ /* padding-left: 15px;  per farci stare il bottone prevArticle */
+  flex: 0 0 70%;
+  max-width: 70%;
+  border-right: 2px solid;
 }
 
 #metadata {
   position: relative;
+  height: 35.85em;
   overflow: scroll;
-  flex: 0 0 30%;
-  max-width: 30%;
+  flex: 0 0 28%;
+  max-width: 28%;
 }
 
 
@@ -719,48 +764,23 @@ button#prev, button#next  {
 
 
 /* METTIAMO IN BLOCK TUTTI I DIV DEGLI ARTICOLI E DELLE COVER */
- 
+#coverPage1, #coverPage2, #coverPage3 { display: none; } 
 
-#issue1 > div, #issue2 > div, #issue3 > div { display: none; }
-
-
-
-#coverPage1:target, #coverPage2:target, #coverPage3:target, #article1:target, #article2:target, #article3:target, #article4:target, #article5:target, #article6:target
-, #article7:target, #article8:target, #article9:target, #article10:target, #article11:target, #article12:target, #article13:target, #article14:target, #article15:target { display: block; }
+#coverPage1:target, #coverPage2:target, #coverPage3:target { display: block; }
 
 
-
-
-
-
-
-
+#article1:target, #article2:target, #article3:target, #article4:target, #article5:target, #article6:target, #article7:target, #article8:target, #article9:target, #article10:target, #article11:target, #article12:target, #article13:target, #article14:target, #article15:target { display: block; }
 
 
 
 
 
 .article {
-  /* padding necessario per i bottoni prev e next */
+  /* padding necessario per i bottoni prev e next
   padding-left: 30px;
-  padding-right: 32px;
+  padding-right: 32px; */
+  display: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -774,3 +794,66 @@ span[onclick] {cursor:pointer;}
   margin: 8px;
   display: inline-block;
 }
+/*
+#listIssue {
+  width: 350px;
+  padding-inline-start: 0px;
+}
+*/
+#listIssue {
+    width: 20em;
+    padding-inline-start: 0px;
+}
+
+#listIssue>li {
+  font-size: 17px;
+  border: 2px solid black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /*padding-left: 5px;*/
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#listIssue li ul{
+  font-size: 16px;
+  list-style-type: none;
+  border: 1px solid black;
+  /*padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;*/
+  margin-top: 5px;
+  padding-inline-start: 0px;
+}
+
+li ul li{font-size: 15px;}
+
+button#sort, button#appearanceSort, button#frequencySort {
+	font-size: 12px;
+	letter-spacing: 2px;
+	padding: 1em 1em;
+  border-color: aquamarine;
+	color: aquamarine;
+  border: 2px solid;
+	background: transparent;
+}
+
+button#sort:hover, button#appearanceSort:hover, button#frequencySort:hover {
+  background-color:aquamarine;
+  border-color: aquamarine;
+  color: black;	
+  font-weight:bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

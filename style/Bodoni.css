@@ -1,0 +1,116 @@
+@font-face {
+  font-family: Bodoni Six ITC;
+  src: url(bodoni-six-itc-book.ttf);
+  
+}
+@font-face {
+  font-family: "Bodoni Seventytwo ITC";
+  src: url("bodoni-seventytwo-itc-book.ttf"); 
+}
+h1{
+  font-family: "Bodoni Seventytwo ITC";
+}
+
+/* stile per cover page*/
+
+body#cover {
+  background-image: url('aminta_cover_page.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  font-family: 'Bodoni Six ITC';
+  font-weight:normal;
+  font-style:normal;
+}
+p{
+	line-height: 20px;
+  text-align:justify;
+	/*font-size: ;
+	letter-spacing: ;
+	word-spacing: ;*/
+}
+
+/* stile per articoli*/
+
+[onClick] {cursor:pointer;}
+span[onclick] {cursor:pointer;}
+[onclick]:hover {background-color: #b38316c4;}
+
+body{
+   background-image: 
+    linear-gradient(
+      rgba(255, 255, 240, 0.5), 
+      rgba(255, 255, 240, 0.5)
+    ),
+    url('../sfondo_bodoni.jpg');
+	
+  background-color: #fcfcf4;
+  /*background-image: url('../sfondo_bodoni.jpg');*/
+  color: #44413c; /*black ink*/
+  font-family: 'Bodoni Six ITC';
+  font-weight:normal;
+  font-style:normal;
+  margin-right: 20vW;
+  margin-left: 30vW;
+  margin-top: 20vW;
+  margin-bottom: 30vW;
+}
+
+p{text-indent: 2em;}
+
+p:first-of-type:first-letter{font-size: 1.5em;}
+p:first-of-type {
+  text-indent: inherit;
+}
+
+p.pubnote {text-transform: uppercase;}
+
+p.byline, p.pubnote, p.subtitle, p.publicationDate, img, h1 {
+	text-align: center;
+	text-transform: uppercase;
+}
+
+img {
+	width:100%;
+	padding-top:1.5em;
+	padding-bottom:1.5em;
+	filter: grayscale(100%) brightness(70%) sepia(70%) contrast(100%);
+}
+
+#heading img {
+	border-radius: 50%;
+	height: 14em;
+        width: 14em;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+h1 {
+	font-size: 2em;
+	line-height: 1.5em;
+}
+
+p.byline {font-size: 1em;}
+
+p.byline .person {font-size: 1.5em;}
+
+p.byline .person::before{
+	content: "\a";
+    	white-space: pre;
+}
+p.byline .person::after{
+	content: "\a";
+    	white-space: pre;
+}
+
+p.subtitle {font-size: 1em;}
+
+p.publicationDate {font-size: 0.5em;}
+
+
+
+
+
+
+
