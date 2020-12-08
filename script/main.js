@@ -525,6 +525,17 @@ function showMetaContent(){
 	else{document.getElementById('contentToShow').style.display = 'none';}
 }
 
+/* FUNZIONE PER LA QUESTIONE UPPERCASE
+function capitalize(span) {  
+    var words = span.split(' ');  
+    var CapitalizedWords = [];  
+    words.forEach(element => {  
+        CapitalizedWords.push(element[0].toUpperCase() + element.slice(1, element.length));  
+    });  
+    return CapitalizedWords.join(' ');  
+} 
+*/
+
 /*
 function removeHighligth(iFrameN){
 	var isOnView = document.getElementById(iFrameN).contentWindow.document.getElementsByName("onView");
