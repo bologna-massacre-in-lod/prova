@@ -173,7 +173,7 @@ function metadataViewer (issueN) {
 				}
 				else{
 					for (c=0; c<matchedLi.children.length; c++){
-						if (span.innerText.toLowerCase().includes(matchedLi.children[c].className) || matchedLi.children[c].className.includes(span.innerText.toLowerCase())) { // partial matching
+						if (span.innerText.toLowerCase().includes(matchedLi.children[c].className.toLowerCase()) || matchedLi.children[c].className.toLowerCase().includes(span.innerText.toLowerCase())) { // partial matching
 							instanceFound = true;
 							var matchedUl = matchedLi.children[c];
 						}
