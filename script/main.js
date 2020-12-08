@@ -412,9 +412,9 @@ function highlight(spanId, iFrameN, event) {
 
 	for (var iFrameDiv of curIFrameDiv.parentNode.children) {
 		if (iFrameN === iFrameDiv.children[0].id) {
-			iFrameDiv.style.display = block;
+			iFrameDiv.style.display = 'block';
 		}
-		else {iFrameDiv.style.display = none;}
+		else {iFrameDiv.style.display = 'none';}
 	}
 
 
