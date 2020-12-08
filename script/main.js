@@ -193,7 +193,7 @@ function metadataViewer (issueN) {
 			//first check: if the category already exist
 			for (var t=0; t<times.length; t++){
 				// creating variable for parent
-				if (times[t].parentNode.tagName === ("Q" || "I" || "SPAN" || "A" || "EM" || "STRONG" || "B" || "CITE")) {
+				if (times[t].parentNode.tagName === "Q" || "I" || "SPAN" || "A" || "EM" || "STRONG" || "B" || "CITE") {
 					var inlineParent = times[t].parentNode;
 					var timeParent = inlineParent.parentNode;
 				}
