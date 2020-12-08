@@ -152,7 +152,7 @@ function metadataViewer (issueN) {
 			//first check: if the category already exist
 			for (var span of spans) {
 				// creating the variable for the parent
-				if (span.parentNode.tagName === ("I" || "A" || "Q" || "SPAN" || "EM" || "STRONG" || "B" || "CITE")) {
+				if (span.parentNode.tagName === "I" || "A" || "Q" || "SPAN" || "EM" || "STRONG" || "B" || "CITE") {
 					var inlineParent = span.parentNode;
 					var spanParent = inlineParent.parentNode;
 				}
