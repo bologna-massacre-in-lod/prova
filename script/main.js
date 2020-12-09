@@ -272,17 +272,17 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 	var instanceNode = document.createTextNode("article "+n+", "+parentTagAndNum+": "); //aggiungere stringa del titolo dell'articolo?
 	
 	occurrenceLi.style.display = 'none';
-	occurrenceLi.appendChild(instanceNode);
-	
+	occurrenceLi.appendChild(instanceNode);	
 	
 	
 	//numero di li il cui span o elemento time corrispondente ha lo stesso parent di quello corrente
 	var pos = 0;
-	// var siblingSpanInner = occurrenceId.match(/([^-]+)/)[1]; //occurrenceId di quello precedente + non va bene per time
+	// recuperare innerText dello span sibling (però non va bene per time)
 	for (var ulchild of newUl.children){
-		if (occurrenceParent.id === ulchild.getAttribute('data-parent')  ){pos++;} // && occurrenceValue === siblingSpanInner
+		if (occurrenceParent.id === ulchild.getAttribute('data-parent') && occurrenceValue === ulchild.getAttribute('data-inner') ) {pos++;} // && occurrenceValue === siblingSpanInner
 	}
 	occurrenceLi.setAttribute('data-parent', occurrenceParent.id);
+	occurrenceLi.setAttribute('data-inner', occurrenceValue);
 
 	var citNode = document.createTextNode('"'+ parsing(occurrence.innerText, occurrenceParent, pos)+'"'); //vedi se fare textNode o innerHTML
 	occurrenceLi.appendChild(citNode); //appena tolto dal commento
@@ -411,15 +411,11 @@ function parsing(instance, parent, numIstanza){
 // serve anche cambiare articolo se i metadati puntano all'articolo non in block al momento? sì
 // manca la scomparsa dello stile onscroll e onclick su qualunque altro tasto
 function highlight(spanId, iFrameN, event) {
+	//cambiare articolo da mattere in display:block se il metadato cliccato è in un articolo diverso rispetto a quello corrente
 	var curIFrameDiv = document.getElementById(iFrameN).parentNode;
-
-	//RICHIAMARE CHANGEARTICLECOMMON NON VA BENE PERCHE' LAVORA CON LE CLASSI E NON CON GLI ID DEI DIV DEGLI ARTICOLI
-	
-
 	var curIssueDivs = curIFrameDiv.parentNode.children;
-	var originButton = document.getElementById("Origin");
-	
-	changeArticleCommon(curIssueDivs, curIFrameDiv.classList[0], originButton, false, '#'); //in questo modo supponiamo che non ci siano metadati nelle cover
+	var originButton = document.getElementById("Origin");	
+	changeArticleCommon(curIssueDivs, curIFrameDiv.classList[0], originButton, false, '#'); //in questo modo supponiamo che né il div target né quello di provenienza sia quello di una cover
 	
 
 	/*
