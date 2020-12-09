@@ -274,6 +274,8 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 	occurrenceLi.style.display = 'none';
 	occurrenceLi.appendChild(instanceNode);
 	
+	var occurrenceId = occurrenceValue+"-"+(newUl.children.length+1);
+	
 	//numero di li il cui span o elemento time corrispondente ha lo stesso parent di quello corrente
 	var pos = 0;
 	var siblingSpanInner = occurenceId.match(/([^-]+)/)[1];
@@ -284,7 +286,8 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 
 	var citNode = document.createTextNode('"'+ parsing(occurrence.innerText, occurrenceParent, pos)+'"'); //vedi se fare textNode o innerHTML
 	occurrenceLi.appendChild(citNode); //appena tolto dal commento
-	var occurrenceId = occurrenceValue+"-"+(newUl.children.length+1);
+	
+
 	occurrence.setAttribute('id', occurrenceId);
 	occurrenceLi.setAttribute('onclick', "highlight('"+occurrenceId+"', '"+myFrames[n].id+"', event)"); // per richiamare la funzione che evidenza il metadato nel testo dell'articolo quando si clicca sul <li> corrispondente nel metadata viewer
 
