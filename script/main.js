@@ -276,8 +276,9 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 	
 	//numero di li il cui span o elemento time corrispondente ha lo stesso parent di quello corrente
 	var pos = 0;
+	var siblingSpanInner = occurenceId.match(/([^-]+)/)[1];
 	for (var ulchild of newUl.children){
-		if (occurrenceParent.id === ulchild.getAttribute('data-parent')){pos++;}
+		if (occurrenceParent.id === ulchild.getAttribute('data-parent') && occurrenceValue === siblingSpanInner){pos++;}
 	}
 	occurrenceLi.setAttribute('data-parent', occurrenceParent.id);
 
