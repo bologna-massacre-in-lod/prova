@@ -278,26 +278,26 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 	
 	//numero di li il cui span o elemento time corrispondente ha lo stesso parent di quello corrente
 	var pos = 0;
-	var siblingSpanInner = occurrenceId.match(/([^-]+)/)[1]; //occurrenceId di quello precedente
+	// var siblingSpanInner = occurrenceId.match(/([^-]+)/)[1]; //occurrenceId di quello precedente + non va bene per time
 	for (var ulchild of newUl.children){
-		if (occurrenceParent.id === ulchild.getAttribute('data-parent') && occurrenceValue === siblingSpanInner){pos++;}
+		if (occurrenceParent.id === ulchild.getAttribute('data-parent')  ){pos++;} // && occurrenceValue === siblingSpanInner
 	}
 	occurrenceLi.setAttribute('data-parent', occurrenceParent.id);
 
 	var citNode = document.createTextNode('"'+ parsing(occurrence.innerText, occurrenceParent, pos)+'"'); //vedi se fare textNode o innerHTML
 	occurrenceLi.appendChild(citNode); //appena tolto dal commento
 	
-	var occurrenceId = occurrenceValue+"-"+(newUl.children.length+1);
+	var occurrenceId = newUl.childNodes[0].nodeValue+"-"+(newUl.children.length+1);
 	occurrence.setAttribute('id', occurrenceId);
 	occurrenceLi.setAttribute('onclick', "highlight('"+occurrenceId+"', '"+myFrames[n].id+"', event)"); // per richiamare la funzione che evidenza il metadato nel testo dell'articolo quando si clicca sul <li> corrispondente nel metadata viewer
 
 	newUl.appendChild(occurrenceLi);
-	occurrence.setAttribute('onclick', "goToMetadata('"+myList.id+"', '"+occurrenceValue+"')");
+	occurrence.setAttribute('onclick', "goToMetadata('"+myList.id+"', '"+newUl.childNodes[0].nodeValue+"')");
 }
 					
 //from text keywords to metadata viewer
-function goToMetadata(curListId, instanceId){
-	var e = window.parent.document.getElementById(curListId).getElementsByClassName(instanceId)[0];
+function goToMetadata(curListId, ulClass){
+	var e = window.parent.document.getElementById(curListId).getElementsByClassName(ulClass)[0];
 	e.style.display = 'block';
 	var f = e.children;
 	f[0].style.display = 'inline-block;'
@@ -343,8 +343,8 @@ function goToMetadata(curListId, instanceId){
 }
 //attribuisci effetto di hover da specificare nel css tipo con un background color 
 
-function showLiChildren(myListId, instanceId){
-	var e = document.getElementById(myListId).getElementsByClassName(instanceId)[0].children;
+function showLiChildren(myListId, spanClass){
+	var e = document.getElementById(myListId).getElementsByClassName(spanClass)[0].children;
 	if(e[0].style.display == 'block') {
 		for (var child of e) {
 			child.style.display = 'none';
@@ -372,8 +372,8 @@ function showLiChildren(myListId, instanceId){
 	}
 }
 
-function showUlChildren(myListId, instanceId, event){
-	var e = document.getElementById(myListId).getElementsByClassName(instanceId)[0].children;
+function showUlChildren(myListId, ulClass, event){
+	var e = document.getElementById(myListId).getElementsByClassName(ulClass)[0].children;
 	if(e[1].style.display == 'block'){
 		//for (var child of e){
 		for (var i=1; i<e.length; i++){
