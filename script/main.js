@@ -267,7 +267,7 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 			var words = ulTextNode.split(' ');  
 	    	var CapitalizedWords = [];  
 	    	words.forEach(element => {  
-	        	CapitalizedWords.push(element[0].toUpperCase() + element.slice(1, element.length));  
+	        	CapitalizedWords.push(element[0].toUpperCase() + element.slice(1, element.length).toLowerCase());  
 	    	});  
 	    	ulTextNode = CapitalizedWords.join(' ');  
     	}
