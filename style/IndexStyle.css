@@ -496,7 +496,7 @@ border-right: 32px;
 
 .footer {
   text-align: justify;
-  /* text-align: center; */
+  text-align: center;
   font-size: small;
   padding-top: 10px;
   padding-bottom: 10px;
