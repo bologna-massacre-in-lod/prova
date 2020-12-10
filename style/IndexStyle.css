@@ -639,7 +639,7 @@ function myFunction() {
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 /* Medium screens --> #metadata below #content? */
-@media all and (min-width: 600px) {
+@media screen and (max-width: 799px) {
   #flex-container {
     display: flex;
     flex-direction: column;
