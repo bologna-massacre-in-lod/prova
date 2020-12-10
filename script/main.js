@@ -269,9 +269,10 @@ function createOccurrenceLi(occurrence, occurrenceParent, occurrenceValue, newUl
 	    	words.forEach(element => {  
 	        	CapitalizedWords.push(element[0].toUpperCase() + element.slice(1, element.length).toLowerCase());  
 	    	});  
-	    	ulTextNode = CapitalizedWords.join(' ');  
+	    	newUlTextNode = CapitalizedWords.join(' ');  
     	}
-    	else {ulTextNode = ulTextNode[0].toUpperCase()+ulTextNode.slice(1).toLowerCase()} //codice ale per maiuscola uppercase in una parola singola e resto lowercase
+    	else {newUlTextNode = ulTextNode[0].toUpperCase()+ulTextNode.slice(1).toLowerCase()} //codice ale per maiuscola uppercase in una parola singola e resto lowercase
+    	newUl.childNodes[0].nodeValue = newUlTextNode;
 	}
 
 	var occurrenceLi = document.createElement('li');
