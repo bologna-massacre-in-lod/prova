@@ -696,7 +696,12 @@ function myFunction() {
     margin-right: 0.05em;
   }
 
-  .footer {
+  .footer { order: 3; }  
+
+}
+
+
+.footer {
     width: 100%;
     text-align: justify;
     text-align: center;
@@ -716,8 +721,6 @@ function myFunction() {
   .footer a:hover{color:white;}
   .footer a:active{color:white;}
   .footer a:visited{color:white;}
-
-}
 
 
 
